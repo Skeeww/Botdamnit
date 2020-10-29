@@ -4,13 +4,15 @@
         "command": "ping",
         "aliases": ["pg", "pong"],
         "usage": "Commande de test pour vérifier le bon fonctionnement du bot",
-        "param": ["number", "message"]
+        "param": ["number", "message"],
+        "rank": ["722433319760953345", "722438193949048867"]
     },
     {
         "name": "Get Ping",
         "command": "getping",
         "aliases": ["gp"],
         "usage": "Retourne votre ping (en ms)",
-        "param": []
+        "param": [],
+        "rank": []
     }
 ]

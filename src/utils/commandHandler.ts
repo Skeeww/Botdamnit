@@ -1,4 +1,5 @@
-import { Message } from 'discord.js';
+import { GuildMember, Message } from 'discord.js';
+import { realpathSync } from 'fs';
 import { Command } from './command';
 import { Config } from './config';
 import { Debug } from './debug';
@@ -17,7 +18,7 @@ namespace Handler{
             return false
         }
         getCommand(): Command.Command{
-            return new Command.Command(this.getName())
+            return Command.exist(this.getName())
         }
         getName(): string{
             return this.msg.content.split(' ')[0].replace(this.PREFIX, '')
@@ -35,8 +36,19 @@ namespace Handler{
         if(handle.isCommand()){
             const cmd: Command.Command = handle.getCommand()
             let command = require(`../commands/${cmd.name}`)
-            Debug.bot(`${msg.author.username} executes command ${cmd.name} with args: ${handle.getArgs()}`)
-            command.Command.run(msg, handle.getArgs())
+            if(!cmd.rank.length){
+                Debug.bot(`${msg.author.username} executes command ${cmd.name} with args: ${handle.getArgs()}`)
+                command.Command.run(msg, handle.getArgs())
+                return
+            }
+            for(let i = 0; i < cmd.rank.length; i++){
+                if((msg.member as GuildMember).roles.cache.find(r => r.id === cmd.rank[i])){
+                    Debug.bot(`${msg.author.username} executes command ${cmd.name} with args: ${handle.getArgs()}`)
+                    command.Command.run(msg, handle.getArgs())
+                    return    
+                }
+            }
+            msg.channel.send(Config.PERMISSION_DENIED)
         }
     }
 

@@ -8,6 +8,7 @@ namespace Command {
         aliases: Array<string>
         usage: string
         param: Array<string>
+        rank: Array<string>
     }
     
     export class Command implements ICommand {
@@ -16,6 +17,7 @@ namespace Command {
         aliases: string[] = []
         usage: string = ""
         param: string[] = []
+        rank: string[] = []
 
         constructor(cmd: string) {
             for(let i = 0; i < rawCommands.length; i++){
@@ -25,6 +27,7 @@ namespace Command {
                     this.aliases = rawCommands[i].aliases as Array<string>,
                     this.usage = rawCommands[i].usage as string,
                     this.param = rawCommands[i].params as Array<string>
+                    this.rank = rawCommands[i].params as Array<string>
                 }
             }
         }
@@ -41,7 +44,7 @@ namespace Command {
                 }
             }
         }
-        return { name: '', command: '', aliases: [], usage: '', param: [] }
+        return { name: '', command: '', aliases: [], usage: '', param: [], rank: [] }
     }
 }
 
