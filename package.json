@@ -1,0 +1,16 @@
+{
+  "name": "botdamnit",
+  "version": "1.0.0",
+  "description": "A discord bot with amazing features",
+  "main": "./dist/main.js",
+  "repository": "git@gitlab.com:skewram/botdamnit.git",
+  "author": "Noan <noan.perrot@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/debug": "^4.1.5",
+    "@types/node": "^14.14.6",
+    "debug": "^4.2.0",
+    "discord.js": "^12.4.1",
+    "dotenv": "^8.2.0"
+  }
+}

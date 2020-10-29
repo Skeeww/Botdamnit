@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Ping",
+        "command": "ping",
+        "aliases": ["pg", "pong"],
+        "usage": "Commande de test pour vérifier le bon fonctionnement du bot",
+        "param": ["number", "message"]
+    },
+    {
+        "name": "Get Ping",
+        "command": "getping",
+        "aliases": ["gp"],
+        "usage": "Retourne votre ping (en ms)",
+        "param": []
+    }
+]
