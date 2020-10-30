@@ -1,6 +1,6 @@
 namespace Command {
 
-    const rawCommands = require("../config/commands.json")
+    export const rawCommands = require("../config/commands.json")
 
     interface ICommand {
         name: string
@@ -21,30 +21,24 @@ namespace Command {
 
         constructor(cmd: string) {
             for(let i = 0; i < rawCommands.length; i++){
-                if(rawCommands[i].command === cmd){
+                if(rawCommands[i].command === cmd || rawCommands[i].aliases.includes(cmd)){
                     this.name = rawCommands[i].name as string,
                     this.command = rawCommands[i].command as string,
                     this.aliases = rawCommands[i].aliases as Array<string>,
                     this.usage = rawCommands[i].usage as string,
-                    this.param = rawCommands[i].params as Array<string>
-                    this.rank = rawCommands[i].params as Array<string>
+                    this.param = rawCommands[i].param as Array<string>
+                    this.rank = rawCommands[i].rank as Array<string>
                 }
             }
         }
     }
-
-    export function exist(command: string): ICommand {
+    
+    export function getAllCommands(): Array<ICommand> {
+        let commands: Array<ICommand> = []
         for(let i = 0; i < rawCommands.length; i++){
-            if(rawCommands[i]["command"] === command){
-                return rawCommands[i]
-            }
-            for(let j = 0; j < rawCommands[i]["aliases"].length; j++){
-                if(rawCommands[i]["aliases"][j] === command){
-                    return rawCommands[i]
-                }
-            }
+            commands.push(rawCommands[i])
         }
-        return { name: '', command: '', aliases: [], usage: '', param: [], rank: [] }
+        return commands
     }
 }
 

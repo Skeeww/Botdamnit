@@ -1,5 +1,6 @@
 import { GuildMember, Message } from 'discord.js';
-import { realpathSync } from 'fs';
+import { CheckCommands } from '../middlewares/checkCommands';
+import { Guard } from '../middlewares/guard';
 import { Command } from './command';
 import { Config } from './config';
 import { Debug } from './debug';
@@ -13,12 +14,8 @@ namespace Handler{
         constructor(msg: Message) {
             this.msg = msg
         }
-        isCommand(): boolean{
-            if(this.msg.content.startsWith(this.PREFIX) && Command.exist(this.getName()).name.length) return true
-            return false
-        }
         getCommand(): Command.Command{
-            return Command.exist(this.getName())
+            return new Command.Command(this.getName())
         }
         getName(): string{
             return this.msg.content.split(' ')[0].replace(this.PREFIX, '')
@@ -32,23 +29,15 @@ namespace Handler{
 
     export function handle(msg: Message){
         const handle: Handler = new Handler(msg)
-
-        if(handle.isCommand()){
+        if(CheckCommands.isCommand(msg.content)){
             const cmd: Command.Command = handle.getCommand()
-            let command = require(`../commands/${cmd.name}`)
-            if(!cmd.rank.length){
+            let command = require(`../commands/${cmd.command}`)
+            if(Guard.checkPerm(msg.member as GuildMember, cmd)){
                 Debug.bot(`${msg.author.username} executes command ${cmd.name} with args: ${handle.getArgs()}`)
-                command.Command.run(msg, handle.getArgs())
-                return
+                command.Command.run(msg, cmd, handle.getArgs())
+            }else{
+                msg.channel.send(Config.PERMISSION_DENIED)
             }
-            for(let i = 0; i < cmd.rank.length; i++){
-                if((msg.member as GuildMember).roles.cache.find(r => r.id === cmd.rank[i])){
-                    Debug.bot(`${msg.author.username} executes command ${cmd.name} with args: ${handle.getArgs()}`)
-                    command.Command.run(msg, handle.getArgs())
-                    return    
-                }
-            }
-            msg.channel.send(Config.PERMISSION_DENIED)
         }
     }
 

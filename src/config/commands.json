@@ -5,7 +5,7 @@
         "aliases": ["pg", "pong"],
         "usage": "Commande de test pour vérifier le bon fonctionnement du bot",
         "param": ["number", "message"],
-        "rank": ["722433319760953345", "722438193949048867"]
+        "rank": ["743833061694767216"]
     },
     {
         "name": "Get Ping",
@@ -13,6 +13,14 @@
         "aliases": ["gp"],
         "usage": "Retourne votre ping (en ms)",
         "param": [],
+        "rank": []
+    },
+    {
+        "name": "Aide",
+        "command": "help",
+        "aliases": ["h", "hp"],
+        "usage": "Affiche l'aide complète ou d'une commande",
+        "param": ["commande"],
         "rank": []
     }
 ]
