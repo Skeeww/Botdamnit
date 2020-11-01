@@ -8,7 +8,7 @@ namespace DirectMessage {
         if(guild){
             const chann = guild.channels.cache.find(c => c.id === Config.GROUPE_CALIN)
             if(chann){
-                (chann as TextChannel).send(msg.content)
+                (chann as TextChannel).send(`${msg.content}\n-----------`)
                 msg.channel.send(":white_check_mark: Message envoyé !")
             }
         }
