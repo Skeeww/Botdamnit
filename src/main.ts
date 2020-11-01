@@ -15,7 +15,7 @@ client.on("ready", () => {
 
 client.on("message", msg => {
     if(msg.author.bot) return
-    msg.author.dmChannel ? DirectMessage.handle(msg) : Handler.handle(msg)
+    (msg.author.dmChannel === null) ? DirectMessage.handle(msg) : Handler.handle(msg)
 })
 
 client.login(Config.BOT_TOKEN).then(() => {
