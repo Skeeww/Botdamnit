@@ -5,7 +5,15 @@
         "aliases": ["pg", "pong"],
         "usage": "Commande de test pour vérifier le bon fonctionnement du bot",
         "param": ["number", "message"],
-        "rank": ["743833061694767216"]
+        "rank": []
+    },
+    {
+        "name": "Rank",
+        "command": "rank",
+        "aliases": [],
+        "usage": "Affiche l'aide pour les rangs",
+        "param": [],
+        "rank": []
     },
     {
         "name": "Aide",
