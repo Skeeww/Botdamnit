@@ -4,6 +4,7 @@ import { Handler } from './utils/commandHandler'
 import { Config } from './utils/config'
 import { Tick } from './modules/tick'
 import { Presence } from './modules/presence'
+import { DirectMessage } from './utils/directMessage'
 
 export const client: Client = new Client()
 
@@ -14,7 +15,7 @@ client.on("ready", () => {
 
 client.on("message", msg => {
     if(msg.author.bot) return
-    Handler.handle(msg)
+    msg.author.dmChannel ? DirectMessage.handle(msg) : Handler.handle(msg)
 })
 
 client.login(Config.BOT_TOKEN).then(() => {

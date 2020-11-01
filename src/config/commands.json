@@ -8,14 +8,6 @@
         "rank": ["743833061694767216"]
     },
     {
-        "name": "Get Ping",
-        "command": "getping",
-        "aliases": ["gp"],
-        "usage": "Retourne votre ping (en ms)",
-        "param": [],
-        "rank": []
-    },
-    {
         "name": "Aide",
         "command": "help",
         "aliases": ["h", "hp"],
