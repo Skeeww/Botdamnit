@@ -16,6 +16,14 @@
         "rank": []
     },
     {
+        "name": "No Nut November",
+        "command": "nnn",
+        "aliases": ["nonutnovember", "branlette"],
+        "usage": "Compte à rebours avant la fin du NNN",
+        "param": [],
+        "rank": []
+    },
+    {
         "name": "Aide",
         "command": "help",
         "aliases": ["h", "hp"],
