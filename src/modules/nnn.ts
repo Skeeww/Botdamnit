@@ -9,7 +9,7 @@ class NNN implements IModule{
     exec: Function = (freq: number) => {
         const tar: Date = new Date(2020, 12, 1)
 
-        //setInterval(() => {
+        setInterval(() => {
             let embed: MessageEmbed = new MessageEmbed()
             axios.get("https://quotes.rest/qod", {headers: {"Accept": "application/json"}}).then(res => {
                 embed.setTitle(`${31 - new Date(Date.now()).getDate()} jours restants (${Math.round(new Date(Date.now()).getDate() * 100 / 31)}%)`)
@@ -17,7 +17,7 @@ class NNN implements IModule{
                 embed.setColor(0x00ff00);
                 (client.guilds.cache.find(g => g.id === Config.GUILD_ID)?.channels.cache.find(c => c.id === Config.NNN) as TextChannel).send(embed)
             });
-        //}, freq)
+        }, freq)
     }
 }
 
