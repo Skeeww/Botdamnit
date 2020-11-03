@@ -9,6 +9,8 @@ import { Twitch } from './modules/twitch'
 import { AutoRank } from './modules/autorank'
 import { NNN } from './modules/nnn'
 
+process.env.TZ = 'Europe/Paris'
+
 export const client: Client = new Client()
 
 client.on("ready", () => {
