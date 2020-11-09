@@ -1,3 +1,4 @@
+src/config/credentials.json
 node_modules/
 .env
 yarn.lock

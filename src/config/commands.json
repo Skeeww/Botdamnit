@@ -32,6 +32,14 @@
         "rank": []
     },
     {
+        "name": "Among Us",
+        "command": "amongus",
+        "aliases": ["amus"],
+        "usage": "Vérifie si une personne est l'imposteur ou non",
+        "param": ["[ texte ]"],
+        "rank": []
+    },
+    {
         "name": "Aide",
         "command": "help",
         "aliases": ["h", "hp"],
