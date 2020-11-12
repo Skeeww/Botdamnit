@@ -10,17 +10,17 @@ class Twitch implements IModule{
         setInterval(() => {
             client.guilds.cache.find(g => g.id === Config.GUILD_ID)?.members.cache.forEach(m => {
                 m.presence.activities.forEach(a => {
-                    if(a.type === "STREAMING" && !inStream.includes(m)){
+                    if(a.type === "STREAMING" && !inStream.includes(m as GuildMember)){
                         const embed: MessageEmbed = new MessageEmbed()
                         embed.setTitle(`${m.displayName} EST EN LIVE !`)
                         embed.setDescription(`${a.details}`)
                         embed.setThumbnail(a.assets?.smallImageURL() || '')
                         embed.setURL(a.url || '')
-                        inStream.push(m);
+                        inStream.push(m as GuildMember);
                         (m.guild.channels.cache.find(c => c.id === Config.SHARE) as TextChannel).send(embed)
                     }
-                    if(a.type !== "STREAMING" && inStream.includes(m)){
-                        inStream.splice(inStream.indexOf(m), 1)
+                    if(a.type !== "STREAMING" && inStream.includes(m as GuildMember)){
+                        inStream.splice(inStream.indexOf(m as GuildMember), 1)
                     }
                 })
             })
