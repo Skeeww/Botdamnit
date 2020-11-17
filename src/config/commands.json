@@ -40,6 +40,14 @@
         "rank": []
     },
     {
+        "name": "Clear",
+        "command": "clear",
+        "aliases": ["cl"],
+        "usage": "Supprime un nombre définit de messages (100 par défaut)",
+        "param": ["[ nombre_de_messages ]"],
+        "rank": ["750980367128854590"]
+    },
+    {
         "name": "Aide",
         "command": "help",
         "aliases": ["h", "hp"],
