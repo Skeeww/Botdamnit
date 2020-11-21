@@ -53,21 +53,18 @@ class Birthday implements IModule{
             })
         })
 
-        let isRunning: boolean = false;
         function run(){
-            birthdays.forEach((d, s) => {
-                if(moment(new Date()).isSame(moment(d), 'day')){
-                    client.guilds.fetch(Config.GUILD_ID).then(g => {
-                        (g.channels.cache.find(c => c.id === Config.ANNONCES) as TextChannel).send(`:catjam::ah::Bigpapog::cum::enorme::ENSEMBLE::coolfox::kreygasm::oui::rirededroite::Papooserious::PatateCoucou::pog::PogU::RenardTropChoupi::melensourire::gicler:\n**Joyeux anniverssaire à ${s} !**:catjam::ah::Bigpapog::cum::enorme::ENSEMBLE::coolfox::kreygasm::oui::rirededroite::Papooserious::PatateCoucou::pog::PogU::RenardTropChoupi::melensourire::gicler:`)
+            setInterval(() => {
+                if(new Date().getHours() === 0 && new Date().getMinutes() === 10){
+                    birthdays.forEach((d, s) => {
+                        if(moment(new Date()).isSame(moment(d), 'day')){
+                            client.guilds.fetch(Config.GUILD_ID).then(g => {
+                                (g.channels.cache.find(c => c.id === Config.ANNONCES) as TextChannel).send(`<:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198> \n**Joyeux anniverssaire à ${s} !** \n <:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198>`)
+                            })
+                        }
                     })
                 }
-            })
-            if(!isRunning){
-                isRunning = true;
-                setInterval(() => {
-                    run();
-                }, freq)
-            }
+            }, freq)
         }
     }
 }
