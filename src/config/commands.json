@@ -48,6 +48,22 @@
         "rank": ["750980367128854590"]
     },
     {
+        "name": "Poll",
+        "command": "poll",
+        "aliases": ["pl"],
+        "usage": "Créer un sondage",
+        "param": ["<choix_1>", "<choix_2>"],
+        "rank": ["750980367128854590"]
+    },
+    {
+        "name": "Spam",
+        "command": "spam",
+        "aliases": ["sp"],
+        "usage": "Spam un message dans le tchat",
+        "param": ["<message>"],
+        "rank": []
+    },
+    {
         "name": "Aide",
         "command": "help",
         "aliases": ["h", "hp"],
