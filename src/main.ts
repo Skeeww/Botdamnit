@@ -18,7 +18,7 @@ export const client: Client = new Client()
 client.on("ready", () => {
     Debug.discord('\'ready\' event is triggered')
     new Tick(parseInt(Config.TIME_BEFORE_CHANGE), [new Presence(), new AutoRank()]).run()
-    new Tick(60000, [new NNN(), new Birthday()]).run()
+    new Tick(60000, [new NNN()]).run()
     new Tick(600000, [new Twitch()]).run()
     new Tick(21600000, [new ColorFiesta()]).run()
 })
