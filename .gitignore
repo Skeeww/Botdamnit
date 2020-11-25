@@ -1,4 +1,3 @@
-dist/
 src/config/credentials.json
 node_modules/
 .env
