@@ -19,7 +19,7 @@ namespace Command {
                     msg.channel.send(`Il reste \`${t} jours\` avant la fin du **No Nut November**`)
                     break
                 case 3:
-                    t = Math.round(tar.getTime() / 3600000 - now.getTime() / 3600000)
+                    t = Math.round(tar.getTime() / 3600000 - now.getTime() / 3600000) / 10
                     msg.channel.send(`Il reste exactement \`${t} heures\` avant la fin du **No Nut November**`)
                     break
             }
