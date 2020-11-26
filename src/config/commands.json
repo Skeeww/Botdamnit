@@ -64,6 +64,14 @@
         "rank": []
     },
     {
+        "name": "GoodBye",
+        "command": "goodbye",
+        "aliases": ["gb", "uknowtherule"],
+        "usage": "Tu connais les règles et moi aussi",
+        "param": [],
+        "rank": []
+    },
+    {
         "name": "Aide",
         "command": "help",
         "aliases": ["h", "hp"],
