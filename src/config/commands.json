@@ -72,6 +72,14 @@
         "rank": []
     },
     {
+        "name": "Not Funny",
+        "command": "notfunny",
+        "aliases": ["notfun", "nf"],
+        "usage": "C'était pas très marrant",
+        "param": [],
+        "rank": []
+    },
+    {
         "name": "Aide",
         "command": "help",
         "aliases": ["h", "hp"],

@@ -5,13 +5,13 @@ import { Debug } from "../utils/debug";
 
 namespace Command {
     export function run(msg: Message, cmd: Cmd.Command, args?: Array<string>){
-        readFile("./src/assets/uknowtherule.mp4", (err, data) => {
+        readFile("./src/assets/notfunny.mp4", (err, data) => {
             if(err){
                 Debug.bot(err)
-                msg.channel.send("Le bot a givup ! *send uwu in the chat*\n```" + err + "```")
+                msg.channel.send("Le bot n'est pas très funny non plus ! *send uwu in the chat*\n```" + err + "```")
                 return
             }
-            msg.channel.send(new MessageAttachment(data, "uknowtherule.mp4"))
+            msg.channel.send(new MessageAttachment(data, "notfunny.mp4"))
         })
     }
 }
