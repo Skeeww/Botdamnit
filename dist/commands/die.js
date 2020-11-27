@@ -7,7 +7,7 @@ var debug_1 = require("../utils/debug");
 var Command;
 (function (Command) {
     function run(msg, cmd, args) {
-        fs_1.readFile("./src/assets/die.mp4", function (err, data) {
+        fs_1.readFile("./src/assets/godie.mp4", function (err, data) {
             if (err) {
                 debug_1.Debug.bot(err);
                 msg.channel.send("Le bot n'est pas très funny non plus ! *send uwu in the chat*\n```" + err + "```");
