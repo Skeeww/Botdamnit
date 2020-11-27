@@ -80,6 +80,30 @@
         "rank": []
     },
     {
+        "name": "Die",
+        "command": "die",
+        "aliases": ["4ever"],
+        "usage": "La mort please",
+        "param": [],
+        "rank": []
+    },
+    {
+        "name": "Sleep",
+        "command": "sleep",
+        "aliases": [],
+        "usage": "Dodo",
+        "param": [],
+        "rank": []
+    },
+    {
+        "name": "Game Over",
+        "command": "gameover",
+        "aliases": [],
+        "usage": "La mort please",
+        "param": [],
+        "rank": []
+    },
+    {
         "name": "Aide",
         "command": "help",
         "aliases": ["h", "hp"],
