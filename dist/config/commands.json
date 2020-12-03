@@ -113,7 +113,7 @@
     },
     {
         "name": "Danse",
-        "command": "danse",
+        "command": "dance",
         "aliases": [],
         "usage": "Apprenez à danser grâce à ces moves déhanchés qui cassent la démarche",
         "param": [],
