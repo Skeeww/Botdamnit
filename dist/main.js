@@ -27,6 +27,14 @@ exports.client.on("message", function (msg) {
         return;
     (msg.channel.type === "dm") ? directMessage_1.DirectMessage.handle(msg) : commandHandler_1.Handler.handle(msg);
 });
+exports.client.on("messageReactionAdd", function (react, user) {
+    if (react.emoji.name === "downvote" && react.count === 10) {
+        react.message.delete();
+    }
+    else if (react.emoji.name === "upvote" && react.count === 20) {
+        react.message.pin({ reason: "Upvoted" });
+    }
+});
 exports.client.login(config_1.Config.BOT_TOKEN).then(function () {
     debug_1.Debug.discord('Connection established');
 }).catch(function (r) {

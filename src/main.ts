@@ -28,6 +28,15 @@ client.on("message", msg => {
     (msg.channel.type === "dm") ? DirectMessage.handle(msg) : Handler.handle(msg)
 })
 
+client.on("messageReactionAdd", (react, user) => {
+    if(react.emoji.name === "downvote" && react.count === 10){
+        react.message.delete()
+    }
+    else if(react.emoji.name === "upvote" && react.count === 20){
+        react.message.pin({reason: "Upvoted"})
+    }
+})
+
 client.login(Config.BOT_TOKEN).then(() => {
     Debug.discord('Connection established')
 }).catch(r => {
