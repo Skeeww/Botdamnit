@@ -112,6 +112,14 @@
         "rank": []
     },
     {
+        "name": "Danse",
+        "command": "danse",
+        "aliases": [],
+        "usage": "Apprenez à danser grâce à ces moves déhanchés qui cassent la démarche",
+        "param": [],
+        "rank": []
+    },
+    {
         "name": "Aide",
         "command": "help",
         "aliases": ["h", "hp"],
