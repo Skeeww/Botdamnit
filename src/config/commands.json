@@ -104,6 +104,14 @@
         "rank": []
     },
     {
+        "name": "Cringe",
+        "command": "cringe",
+        "aliases": [],
+        "usage": "Genre c'était vraiment cringe tu peux delete ou downvote sinon",
+        "param": [],
+        "rank": []
+    },
+    {
         "name": "Aide",
         "command": "help",
         "aliases": ["h", "hp"],
