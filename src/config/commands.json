@@ -120,6 +120,14 @@
         "rank": []
     },
     {
+        "name": "Shittify",
+        "command": "shittify",
+        "aliases": ["shitty"],
+        "usage": "Emojifie tes messages",
+        "param": ["<message>"],
+        "rank": []
+    },
+    {
         "name": "Aide",
         "command": "help",
         "aliases": ["h", "hp"],
