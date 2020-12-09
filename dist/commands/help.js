@@ -22,7 +22,7 @@ var Command;
         embed.setTitle("====ASSITANCE MICROSOFT====");
         embed.setDescription("Menu d'aide pour les différentes commandes");
         command_1.Command.getAllCommands().forEach(function (cmd) {
-            embed.addField(cmd.name, cmd.command + "\n" + cmd.aliases, true);
+            embed.addField(cmd.name, "" + cmd.command, true);
         });
         return embed;
     }

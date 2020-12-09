@@ -10,9 +10,9 @@ var presence_1 = require("./modules/presence");
 var directMessage_1 = require("./utils/directMessage");
 var twitch_1 = require("./modules/twitch");
 var autorank_1 = require("./modules/autorank");
-var nnn_1 = require("./modules/nnn");
 var colorfiesta_1 = require("./modules/colorfiesta");
 var birthday_1 = require("./modules/birthday");
+var nnn_1 = require("./modules/nnn");
 process.env.TZ = 'Europe/Paris';
 exports.client = new discord_js_1.Client();
 exports.client.on("ready", function () {
@@ -28,10 +28,10 @@ exports.client.on("message", function (msg) {
     (msg.channel.type === "dm") ? directMessage_1.DirectMessage.handle(msg) : commandHandler_1.Handler.handle(msg);
 });
 exports.client.on("messageReactionAdd", function (react, user) {
-    if (react.emoji.name === "downvote" && react.count === 10) {
+    if (react.emoji.name === "downvote" && (react.count || 0) >= 10) {
         react.message.delete();
     }
-    else if (react.emoji.name === "upvote" && react.count === 20) {
+    else if (react.emoji.name === "upvote" && (react.count || 0) >= 20) {
         react.message.pin({ reason: "Upvoted" });
     }
 });

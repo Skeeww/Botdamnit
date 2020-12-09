@@ -7,9 +7,9 @@ import { Presence } from './modules/presence'
 import { DirectMessage } from './utils/directMessage'
 import { Twitch } from './modules/twitch'
 import { AutoRank } from './modules/autorank'
-import { NNN } from './modules/nnn'
 import { ColorFiesta } from './modules/colorfiesta'
 import { Birthday } from './modules/birthday'
+import { NNN } from './modules/nnn'
 
 process.env.TZ = 'Europe/Paris'
 
@@ -29,10 +29,10 @@ client.on("message", msg => {
 })
 
 client.on("messageReactionAdd", (react, user) => {
-    if(react.emoji.name === "downvote" && react.count === 10){
+    if(react.emoji.name === "downvote" && (react.count || 0) >= 10){
         react.message.delete()
     }
-    else if(react.emoji.name === "upvote" && react.count === 20){
+    else if(react.emoji.name === "upvote" && (react.count || 0) >= 20){
         react.message.pin({reason: "Upvoted"})
     }
 })

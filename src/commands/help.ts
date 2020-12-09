@@ -21,7 +21,7 @@ namespace Command {
         embed.setTitle("====ASSITANCE MICROSOFT====")
         embed.setDescription("Menu d'aide pour les différentes commandes")
         Cmd.getAllCommands().forEach(cmd => {
-            embed.addField(cmd.name, `${cmd.command}\n${cmd.aliases}`, true)
+            embed.addField(cmd.name, `${cmd.command}`, true)
         })
         return embed
     }

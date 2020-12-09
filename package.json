@@ -11,15 +11,15 @@
     "@types/fluent-ffmpeg": "^2.1.16",
     "@types/jimp": "^0.2.28",
     "@types/moment": "^2.13.0",
-    "@types/node": "^14.14.6",
+    "@types/node": "^14.14.11",
     "axios": "^0.21.0",
-    "debug": "^4.2.0",
-    "discord.js": "^12.4.1",
+    "debug": "^4.3.1",
+    "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "fluent-ffmpeg": "^2.1.2",
     "googleapis": "^65.0.0",
     "jimp": "^0.16.1",
-    "minecraft-server-util": "^3.0.4",
+    "minecraft-server-util": "^3.3.1",
     "moment": "^2.29.1"
   }
 }

@@ -52,8 +52,8 @@
         "command": "poll",
         "aliases": ["pl"],
         "usage": "Créer un sondage",
-        "param": ["<choix_1>", "<choix_2>"],
-        "rank": ["750980367128854590"]
+        "param": ["<choix 1>, <choix 2>, <choix n>, <question>"],
+        "rank": []
     },
     {
         "name": "Orthographe",
