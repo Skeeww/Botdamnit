@@ -128,6 +128,14 @@
         "rank": []
     },
     {
+        "name": "Il fait chaud",
+        "command": "ilfaitunechaleur",
+        "aliases": [],
+        "usage": "Slowdown le channel",
+        "param": [],
+        "rank": ["750980367128854590"]
+    },
+    {
         "name": "Aide",
         "command": "help",
         "aliases": ["h", "hp"],
