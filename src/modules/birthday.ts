@@ -60,6 +60,8 @@ class Birthday implements IModule{
                         if(moment(new Date()).isSame(moment(d), 'day')){
                             client.guilds.fetch(Config.GUILD_ID).then(g => {
                                 (g.channels.cache.find(c => c.id === Config.ANNONCES) as TextChannel).send(`<:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198> \n**Joyeux anniverssaire à ${s} !** \n <:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198>`)
+                            }).catch((err) => {
+                                Debug.bot(err)
                             })
                         }
                     })

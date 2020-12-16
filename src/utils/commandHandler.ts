@@ -1,5 +1,4 @@
 import { GuildMember, Message } from 'discord.js';
-import { client } from '../main';
 import { CheckCommands } from '../middlewares/checkCommands';
 import { Guard } from '../middlewares/guard';
 import { Command } from './command';
@@ -29,11 +28,6 @@ namespace Handler{
     }
 
     export function handle(msg: Message){
-        /* Redditing */
-        if(msg.content.startsWith("REDDIT") || msg.channel.id === "750413521493295154"){
-            msg.react(msg.guild?.emojis.cache.find(e => e.name === "upvote") || "")
-            msg.react(msg.guild?.emojis.cache.find(e => e.name === "downvote") || "")
-        }
         const handle: Handler = new Handler(msg)
         if(CheckCommands.isCommand(msg.content)){
             const cmd: Command.Command = handle.getCommand()
@@ -42,7 +36,9 @@ namespace Handler{
                 Debug.bot(`${msg.author.username} executes command ${cmd.name} with args: ${handle.getArgs()}`)
                 command.Command.run(msg, cmd, handle.getArgs())
             }else{
-                msg.channel.send(Config.PERMISSION_DENIED)
+                msg.channel.send(Config.PERMISSION_DENIED).catch((err) => {
+                    Debug.bot(err)
+                })
             }
         }
     }

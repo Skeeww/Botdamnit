@@ -8,22 +8,6 @@
         "rank": []
     },
     {
-        "name": "Rank",
-        "command": "rank",
-        "aliases": [],
-        "usage": "Affiche l'aide pour les rangs",
-        "param": [],
-        "rank": []
-    },
-    {
-        "name": "No Nut November",
-        "command": "nnn",
-        "aliases": ["nonutnovember", "branlette"],
-        "usage": "Compte à rebours avant la fin du NNN",
-        "param": [],
-        "rank": []
-    },
-    {
         "name": "Minecraft",
         "command": "minecraft",
         "aliases": ["mc"],
@@ -60,62 +44,6 @@
         "command": "orthographe",
         "aliases": ["oph", "ortho"],
         "usage": "Fait attention à l'orthographe",
-        "param": [],
-        "rank": []
-    },
-    {
-        "name": "GoodBye",
-        "command": "goodbye",
-        "aliases": ["gb", "uknowtherule"],
-        "usage": "Tu connais les règles et moi aussi",
-        "param": [],
-        "rank": []
-    },
-    {
-        "name": "Not Funny",
-        "command": "notfunny",
-        "aliases": ["notfun", "nf"],
-        "usage": "C'était pas très marrant",
-        "param": [],
-        "rank": []
-    },
-    {
-        "name": "Die",
-        "command": "die",
-        "aliases": ["4ever"],
-        "usage": "La mort please",
-        "param": [],
-        "rank": []
-    },
-    {
-        "name": "Sleep",
-        "command": "sleep",
-        "aliases": [],
-        "usage": "Dodo",
-        "param": [],
-        "rank": []
-    },
-    {
-        "name": "Game Over",
-        "command": "gameover",
-        "aliases": [],
-        "usage": "La mort please",
-        "param": [],
-        "rank": []
-    },
-    {
-        "name": "Cringe",
-        "command": "cringe",
-        "aliases": [],
-        "usage": "Genre c'était vraiment cringe tu peux delete ou downvote sinon",
-        "param": [],
-        "rank": []
-    },
-    {
-        "name": "Danse",
-        "command": "dance",
-        "aliases": [],
-        "usage": "Apprenez à danser grâce à ces moves déhanchés qui cassent la démarche",
         "param": [],
         "rank": []
     },
