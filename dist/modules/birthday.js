@@ -101,6 +101,8 @@ var Birthday = /** @class */ (function () {
                             if (moment_1.default(new Date()).isSame(moment_1.default(d), 'day')) {
                                 main_1.client.guilds.fetch(config_1.Config.GUILD_ID).then(function (g) {
                                     g.channels.cache.find(function (c) { return c.id === config_1.Config.ANNONCES; }).send("<:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198> \n**Joyeux anniverssaire \u00E0 " + s + " !** \n <:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198><:catjam:766775172388487198>");
+                                }).catch(function (err) {
+                                    debug_1.Debug.bot(err);
                                 });
                             }
                         });
