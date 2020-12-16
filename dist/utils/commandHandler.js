@@ -27,12 +27,6 @@ var Handler;
         return Handler;
     }());
     function handle(msg) {
-        var _a, _b;
-        /* Redditing */
-        if (msg.content.startsWith("REDDIT") || msg.channel.id === "750413521493295154") {
-            msg.react(((_a = msg.guild) === null || _a === void 0 ? void 0 : _a.emojis.cache.find(function (e) { return e.name === "upvote"; })) || "");
-            msg.react(((_b = msg.guild) === null || _b === void 0 ? void 0 : _b.emojis.cache.find(function (e) { return e.name === "downvote"; })) || "");
-        }
         var handle = new Handler(msg);
         if (checkCommands_1.CheckCommands.isCommand(msg.content)) {
             var cmd = handle.getCommand();
@@ -42,7 +36,9 @@ var Handler;
                 command.Command.run(msg, cmd, handle.getArgs());
             }
             else {
-                msg.channel.send(config_1.Config.PERMISSION_DENIED);
+                msg.channel.send(config_1.Config.PERMISSION_DENIED).catch(function (err) {
+                    debug_1.Debug.bot(err);
+                });
             }
         }
     }

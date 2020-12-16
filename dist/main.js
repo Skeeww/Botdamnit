@@ -12,13 +12,14 @@ var twitch_1 = require("./modules/twitch");
 var autorank_1 = require("./modules/autorank");
 var colorfiesta_1 = require("./modules/colorfiesta");
 var birthday_1 = require("./modules/birthday");
-var nnn_1 = require("./modules/nnn");
 process.env.TZ = 'Europe/Paris';
 exports.client = new discord_js_1.Client();
 exports.client.on("ready", function () {
+    require('./events/Reddit');
+    //require('./events/Rules')
     debug_1.Debug.discord('\'ready\' event is triggered');
     new tick_1.Tick(parseInt(config_1.Config.TIME_BEFORE_CHANGE), [new presence_1.Presence(), new autorank_1.AutoRank()]).run();
-    new tick_1.Tick(60000, [new nnn_1.NNN(), new birthday_1.Birthday()]).run();
+    new tick_1.Tick(60000, [new birthday_1.Birthday()]).run();
     new tick_1.Tick(600000, [new twitch_1.Twitch()]).run();
     new tick_1.Tick(21600000, [new colorfiesta_1.ColorFiesta()]).run();
 });
@@ -26,14 +27,6 @@ exports.client.on("message", function (msg) {
     if (msg.author.bot)
         return;
     (msg.channel.type === "dm") ? directMessage_1.DirectMessage.handle(msg) : commandHandler_1.Handler.handle(msg);
-});
-exports.client.on("messageReactionAdd", function (react, user) {
-    if (react.emoji.name === "downvote" && (react.count || 0) >= 10) {
-        react.message.delete();
-    }
-    else if (react.emoji.name === "upvote" && (react.count || 0) >= 20) {
-        react.message.pin({ reason: "Upvoted" });
-    }
 });
 exports.client.login(config_1.Config.BOT_TOKEN).then(function () {
     debug_1.Debug.discord('Connection established');
