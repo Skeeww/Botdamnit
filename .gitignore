@@ -1,5 +1,6 @@
 src/config/credentials.json
 node_modules/
+src/log/*.log
 .env
 yarn.lock
 yarn-error.log

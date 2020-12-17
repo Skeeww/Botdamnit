@@ -1,36 +1,30 @@
-import { Client } from 'discord.js'
+import Eris, { CommandClient } from 'eris'
 import { Debug } from "./utils/debug"
-import { Handler } from './utils/commandHandler'
 import { Config } from './utils/config'
-import { Tick } from './modules/tick'
-import { Presence } from './modules/presence'
-import { DirectMessage } from './utils/directMessage'
-import { Twitch } from './modules/twitch'
-import { AutoRank } from './modules/autorank'
-import { ColorFiesta } from './modules/colorfiesta'
-import { Birthday } from './modules/birthday'
 
 process.env.TZ = 'Europe/Paris'
 
-export const client: Client = new Client()
+export const client: CommandClient = new Eris.CommandClient(Config.BOT_TOKEN, {}, {
+    name: "Botdamnit",
+    description: "Incredible bot full of useless features !",
+    prefix: ".",
+    owner: "Skew",
+    argsSplitter: (str) => {
+        return str.split(",")
+    }
+})
 
 client.on("ready", () => {
-    require('./events/Reddit')
-    //require('./events/Rules')
     Debug.discord('\'ready\' event is triggered')
-    new Tick(parseInt(Config.TIME_BEFORE_CHANGE), [new Presence(), new AutoRank()]).run()
-    new Tick(60000, [new Birthday()]).run()
-    new Tick(600000, [new Twitch()]).run()
-    new Tick(21600000, [new ColorFiesta()]).run()
+    require('./events')
 })
 
-client.on("message", msg => {
-    if(msg.author.bot) return
-    (msg.channel.type === "dm") ? DirectMessage.handle(msg) : Handler.handle(msg)
+client.on("rawWS", (packet, id) => {
+    Debug.bot(`${id}: ${packet.t}`)
 })
 
-client.login(Config.BOT_TOKEN).then(() => {
-    Debug.discord('Connection established')
-}).catch(r => {
-    Debug.discord(r)
+client.connect().then(() => {
+    Debug.discord("Bot connected")
+}).catch(() => {
+    Debug.discord("Failure to connect the bot")
 })

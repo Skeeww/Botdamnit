@@ -1,36 +1,38 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.client = void 0;
-var discord_js_1 = require("discord.js");
+var eris_1 = __importDefault(require("eris"));
 var debug_1 = require("./utils/debug");
-var commandHandler_1 = require("./utils/commandHandler");
 var config_1 = require("./utils/config");
-var tick_1 = require("./modules/tick");
-var presence_1 = require("./modules/presence");
-var directMessage_1 = require("./utils/directMessage");
-var twitch_1 = require("./modules/twitch");
-var autorank_1 = require("./modules/autorank");
-var colorfiesta_1 = require("./modules/colorfiesta");
-var birthday_1 = require("./modules/birthday");
 process.env.TZ = 'Europe/Paris';
-exports.client = new discord_js_1.Client();
+exports.client = new eris_1.default.CommandClient(config_1.Config.BOT_TOKEN, {}, {
+    name: "Botdamnit",
+    description: "Incredible bot full of useless features !",
+    prefix: ".",
+    owner: "Skew",
+    argsSplitter: function (str) {
+        return str.split(",");
+    }
+});
 exports.client.on("ready", function () {
-    require('./events/Reddit');
-    //require('./events/Rules')
     debug_1.Debug.discord('\'ready\' event is triggered');
-    new tick_1.Tick(parseInt(config_1.Config.TIME_BEFORE_CHANGE), [new presence_1.Presence(), new autorank_1.AutoRank()]).run();
-    new tick_1.Tick(60000, [new birthday_1.Birthday()]).run();
-    new tick_1.Tick(600000, [new twitch_1.Twitch()]).run();
-    new tick_1.Tick(21600000, [new colorfiesta_1.ColorFiesta()]).run();
+    setInterval(function () {
+        console.log(process.memoryUsage().heapUsed * 100 / process.memoryUsage().heapTotal);
+    }, 1000);
 });
-exports.client.on("message", function (msg) {
-    if (msg.author.bot)
-        return;
-    (msg.channel.type === "dm") ? directMessage_1.DirectMessage.handle(msg) : commandHandler_1.Handler.handle(msg);
+exports.client.registerCommand("ping", function (msg, args) {
+    msg.channel.createMessage("Pong !");
+}, {
+    description: "Pong",
+    usage: "ping",
+    fullDescription: "Powerful command de test"
 });
-exports.client.login(config_1.Config.BOT_TOKEN).then(function () {
-    debug_1.Debug.discord('Connection established');
-}).catch(function (r) {
-    debug_1.Debug.discord(r);
+exports.client.connect().then(function () {
+    debug_1.Debug.discord("Bot connected");
+}).catch(function () {
+    debug_1.Debug.discord("Failure to connect the bot");
 });
 //# sourceMappingURL=main.js.map

@@ -15,14 +15,14 @@
     "axios": "^0.21.0",
     "bufferutil": "^4.0.2",
     "debug": "^4.3.1",
-    "discord.js": "^12.5.1",
-    "discord.js-light": "^3.4.2",
     "dotenv": "^8.2.0",
+    "eris": "^0.14.0",
     "fluent-ffmpeg": "^2.1.2",
     "googleapis": "^65.0.0",
     "jimp": "^0.16.1",
     "minecraft-server-util": "^3.3.1",
     "moment": "^2.29.1",
+    "simple-node-logger": "^18.12.24",
     "utf-8-validate": "^5.0.3"
   }
 }
