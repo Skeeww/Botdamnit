@@ -19,16 +19,10 @@ exports.client = new eris_1.default.CommandClient(config_1.Config.BOT_TOKEN, {},
 });
 exports.client.on("ready", function () {
     debug_1.Debug.discord('\'ready\' event is triggered');
-    setInterval(function () {
-        console.log(process.memoryUsage().heapUsed * 100 / process.memoryUsage().heapTotal);
-    }, 1000);
+    require('./events');
 });
-exports.client.registerCommand("ping", function (msg, args) {
-    msg.channel.createMessage("Pong !");
-}, {
-    description: "Pong",
-    usage: "ping",
-    fullDescription: "Powerful command de test"
+exports.client.on("rawWS", function (packet, id) {
+    debug_1.Debug.bot(id + ": " + packet.t);
 });
 exports.client.connect().then(function () {
     debug_1.Debug.discord("Bot connected");
