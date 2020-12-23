@@ -23,9 +23,9 @@ export namespace Rules {
     client.getMessage(Config.RULES_CHANNEL, Config.RULES_MESSAGE).then(msg => {
         msg.getReaction(Config.RULE_EMOJI_NAME).then(users => users.forEach(user => membersAcceptedRules.push(user.id))).then(() => {
             client.guilds.get(Config.GUILD_ID)?.members.forEach(m => {
-                if(m.roles.includes(Config.RULES_AGREE) && !membersAcceptedRules.includes(m.id)){
+                if(m.roles.length > 1 && !m.bot && !membersAcceptedRules.includes(m.id)){
                     refuseRules(m);
-                }else if(!m.roles.includes(Config.RULES_AGREE) && membersAcceptedRules.includes(m.id)){
+                }else if(!m.roles.includes(Config.RULES_AGREE) && !m.bot && membersAcceptedRules.includes(m.id)){
                     acceptRules(m);
                 }
             })
