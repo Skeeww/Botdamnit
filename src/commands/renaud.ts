@@ -3,7 +3,7 @@ import { Command as Cmd } from "../utils/command";
 import { Debug } from "../utils/debug";
 import Jimp from "jimp";
 namespace Command {
-    const font: string = Jimp.FONT_SANS_64_WHITE
+    const font: string = Jimp.FONT_SANS_32_WHITE
 
     export function run(msg: Message, cmd: Cmd.Command, args?: Array<string>){
         if((args?.join(" ") || "").length < 20){
