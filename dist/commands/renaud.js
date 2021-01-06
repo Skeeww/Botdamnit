@@ -9,7 +9,7 @@ var debug_1 = require("../utils/debug");
 var jimp_1 = __importDefault(require("jimp"));
 var Command;
 (function (Command) {
-    var font = jimp_1.default.FONT_SANS_64_WHITE;
+    var font = jimp_1.default.FONT_SANS_32_WHITE;
     function run(msg, cmd, args) {
         if (((args === null || args === void 0 ? void 0 : args.join(" ")) || "").length < 20) {
             jimp_1.default.read("./src/assets/renaud.png").then(function (img) {
