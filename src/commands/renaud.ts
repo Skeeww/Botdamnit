@@ -3,13 +3,13 @@ import { Command as Cmd } from "../utils/command";
 import { Debug } from "../utils/debug";
 import Jimp from "jimp";
 namespace Command {
-    const font: string = Jimp.FONT_SANS_32_WHITE
+    const font: string = Jimp.FONT_SANS_64_WHITE
 
     export function run(msg: Message, cmd: Cmd.Command, args?: Array<string>){
         if((args?.join(" ") || "").length < 20){
             Jimp.read("./src/assets/renaud.png").then(img => {
                 Jimp.loadFont(font).then(f => {
-                    img.print(f, 305, 275, {
+                    img.print(f, 305, 306, {
                         text: args?.join(" "),
                         alignmentX: Jimp.HORIZONTAL_ALIGN_LEFT,
                         alignmentY: Jimp.VERTICAL_ALIGN_TOP
