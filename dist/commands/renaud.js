@@ -12,7 +12,7 @@ var Command;
     var font = jimp_1.default.FONT_SANS_32_WHITE;
     function run(msg, cmd, args) {
         if (((args === null || args === void 0 ? void 0 : args.join(" ")) || "").length < 20) {
-            jimp_1.default.read("./src/assets/rena.png").then(function (img) {
+            jimp_1.default.read("./src/assets/renaud.png").then(function (img) {
                 jimp_1.default.loadFont(font).then(function (f) {
                     img.print(f, 305, 330, {
                         text: args === null || args === void 0 ? void 0 : args.join(" "),

@@ -7,7 +7,7 @@ namespace Command {
 
     export function run(msg: Message, cmd: Cmd.Command, args?: Array<string>){
         if((args?.join(" ") || "").length < 20){
-            Jimp.read("./src/assets/rena.png").then(img => {
+            Jimp.read("./src/assets/renaud.png").then(img => {
                 Jimp.loadFont(font).then(f => {
                     img.print(f, 305, 330, {
                         text: args?.join(" "),
