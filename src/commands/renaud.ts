@@ -9,7 +9,7 @@ namespace Command {
         if((args?.join(" ") || "").length < 20){
             Jimp.read("./src/assets/renaud.png").then(img => {
                 Jimp.loadFont(font).then(f => {
-                    img.print(f, 305, 277, {
+                    img.print(f, 305, 280, {
                         text: args?.join(" "),
                         alignmentX: Jimp.HORIZONTAL_ALIGN_LEFT,
                         alignmentY: Jimp.VERTICAL_ALIGN_TOP
