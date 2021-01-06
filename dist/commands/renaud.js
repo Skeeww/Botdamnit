@@ -14,7 +14,7 @@ var Command;
         if (((args === null || args === void 0 ? void 0 : args.join(" ")) || "").length < 20) {
             jimp_1.default.read("./src/assets/renaud.png").then(function (img) {
                 jimp_1.default.loadFont(font).then(function (f) {
-                    img.print(f, 305, 306, {
+                    img.print(f, 305, 277, {
                         text: args === null || args === void 0 ? void 0 : args.join(" "),
                         alignmentX: jimp_1.default.HORIZONTAL_ALIGN_LEFT,
                         alignmentY: jimp_1.default.VERTICAL_ALIGN_TOP
