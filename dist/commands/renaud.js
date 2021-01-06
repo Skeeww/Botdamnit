@@ -17,7 +17,7 @@ var Command;
                     img.print(f, 305, 330, {
                         text: args === null || args === void 0 ? void 0 : args.join(" "),
                         alignmentX: jimp_1.default.HORIZONTAL_ALIGN_LEFT,
-                        alignmentY: jimp_1.default.VERTICAL_ALIGN_BOTTOM
+                        alignmentY: jimp_1.default.VERTICAL_ALIGN_TOP
                     }, function (err, v) {
                         if (err) {
                             debug_1.Debug.bot(err);

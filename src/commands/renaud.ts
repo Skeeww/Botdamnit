@@ -12,7 +12,7 @@ namespace Command {
                     img.print(f, 305, 330, {
                         text: args?.join(" "),
                         alignmentX: Jimp.HORIZONTAL_ALIGN_LEFT,
-                        alignmentY: Jimp.VERTICAL_ALIGN_BOTTOM
+                        alignmentY: Jimp.VERTICAL_ALIGN_TOP
                     }, (err, v) => {
                         if(err){
                             Debug.bot(err)
