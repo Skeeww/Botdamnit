@@ -64,6 +64,14 @@
         "rank": ["750980367128854590"]
     },
     {
+        "name": "Renaud",
+        "command": "renaud",
+        "aliases": [],
+        "usage": "Connard de",
+        "param": ["<message>"],
+        "rank": []
+    },
+    {
         "name": "Aide",
         "command": "help",
         "aliases": ["h", "hp"],
