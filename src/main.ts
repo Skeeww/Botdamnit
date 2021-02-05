@@ -6,9 +6,6 @@ import { Tick } from './modules/tick'
 import { Presence } from './modules/presence'
 import { DirectMessage } from './utils/directMessage'
 import { Twitch } from './modules/twitch'
-import { AutoRank } from './modules/autorank'
-import { ColorFiesta } from './modules/colorfiesta'
-import { Birthday } from './modules/birthday'
 
 process.env.TZ = 'Europe/Paris'
 
@@ -16,12 +13,9 @@ export const client: Client = new Client()
 
 client.on("ready", () => {
     require('./events/Reddit')
-    //require('./events/Rules')
     Debug.discord('\'ready\' event is triggered')
-    new Tick(parseInt(Config.TIME_BEFORE_CHANGE), [new Presence(), new AutoRank()]).run()
-    new Tick(60000, [new Birthday()]).run()
+    new Tick(parseInt(Config.TIME_BEFORE_CHANGE), [new Presence()]).run()
     new Tick(600000, [new Twitch()]).run()
-    new Tick(21600000, [new ColorFiesta()]).run()
 })
 
 client.on("message", msg => {
