@@ -78,5 +78,13 @@
         "usage": "Affiche l'aide complète ou d'une commande",
         "param": ["commande"],
         "rank": []
+    },
+    {
+        "name": "Convert",
+        "command": "convert",
+        "aliases": ["conv", "cv"],
+        "usage": "Convertisseur binaire et ta mère",
+        "param": ["type", "valeur"],
+        "rank": []
     }
 ]
