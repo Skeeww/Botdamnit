@@ -1,20 +1,16 @@
-import { Message, TextChannel } from "discord.js";
-import { Command as Cmd } from "../utils/command";
+import { TextChannel } from "discord.js";
+import { HandledCommand } from "../utils/commandHandler";
 
-namespace Command {
-    export function run(msg: Message, cmd: Cmd.Command, args?: Array<string>){
-        let msgNumber: number = 100;
+export function run(cmd: HandledCommand) {
+    let msgNumber: number = 100;
 
-        if(args?.length){
-            msgNumber = parseInt(args[0])
-        }
-        
-        (msg.channel as TextChannel).bulkDelete(msgNumber).then(() => {
-            msg.channel.send(`Nettoyage de ${msgNumber} messages`)
-        }).catch(() => {
-            msg.channel.send(`Une erreur est survenu #sendUwU in the tchat !`)
-        })
+    if (cmd.args.length) {
+        msgNumber = parseInt(cmd.args[0])
     }
-}
 
-export { Command }
+    (cmd.msg.channel as TextChannel).bulkDelete(msgNumber).then(() => {
+        cmd.msg.channel.send(`Nettoyage de ${msgNumber} messages`)
+    }).catch(() => {
+        cmd.msg.channel.send(`Une erreur est survenu #sendUwU in the tchat !`)
+    })
+}

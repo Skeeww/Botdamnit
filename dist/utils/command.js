@@ -1,39 +1,42 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Command = void 0;
-var Command;
-(function (Command_1) {
-    Command_1.rawCommands = require("../config/commands.json");
-    var Command = /** @class */ (function () {
-        function Command(cmd) {
-            this.name = "";
-            this.command = "";
-            this.aliases = [];
-            this.usage = "";
-            this.param = [];
-            this.rank = [];
-            for (var i = 0; i < Command_1.rawCommands.length; i++) {
-                if (Command_1.rawCommands[i].command === cmd || Command_1.rawCommands[i].aliases.includes(cmd)) {
-                    this.name = Command_1.rawCommands[i].name,
-                        this.command = Command_1.rawCommands[i].command,
-                        this.aliases = Command_1.rawCommands[i].aliases,
-                        this.usage = Command_1.rawCommands[i].usage,
-                        this.param = Command_1.rawCommands[i].param;
-                    this.rank = Command_1.rawCommands[i].rank;
-                }
+var commands_json_1 = __importDefault(require("../config/commands.json"));
+var main_1 = require("../main");
+var Command = /** @class */ (function () {
+    function Command(cmd) {
+        this.name = "";
+        this.command = "";
+        this.aliases = [];
+        this.usage = "";
+        this.param = [];
+        this.rank = [];
+        var i = 0;
+        var found = false;
+        while (i < commands_json_1.default.length && !found) {
+            if (cmd === commands_json_1.default[i].name || commands_json_1.default[i].aliases.includes(cmd)) {
+                this.name = commands_json_1.default[i].name;
+                this.command = commands_json_1.default[i].command;
+                this.aliases = commands_json_1.default[i].aliases;
+                this.usage = commands_json_1.default[i].usage;
+                this.param = commands_json_1.default[i].param;
+                this.rank = commands_json_1.default[i].rank;
+            }
+            else {
+                i++;
             }
         }
-        return Command;
-    }());
-    Command_1.Command = Command;
-    function getAllCommands() {
-        var commands = [];
-        for (var i = 0; i < Command_1.rawCommands.length; i++) {
-            commands.push(Command_1.rawCommands[i]);
-        }
-        return commands;
     }
-    Command_1.getAllCommands = getAllCommands;
-})(Command || (Command = {}));
+    Command.getAllCommands = function () {
+        return commands_json_1.default;
+    };
+    Command.extractCommand = function (content) {
+        return content.split(" ")[0].replace(main_1.config.PREFIX, '');
+    };
+    return Command;
+}());
 exports.Command = Command;
 //# sourceMappingURL=command.js.map

@@ -1,10 +1,5 @@
-import { Message } from "discord.js";
-import { Command as Cmd } from "../utils/command";
+import { HandledCommand } from "../utils/commandHandler";
 
-namespace Command {
-    export function run(msg: Message, cmd: Cmd.Command, args?: Array<string>){
-        msg.content === "ping" ? msg.channel.send("Pong !") : msg.channel.send("Ping !")
-    }
+export function run(cmd: HandledCommand) {
+    cmd.msg.content === "ping" ? cmd.msg.channel.send("Pong !") : cmd.msg.channel.send("Ping !")
 }
-
-export { Command }

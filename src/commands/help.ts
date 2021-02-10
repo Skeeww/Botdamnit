@@ -1,42 +1,38 @@
-import { Message, MessageEmbed } from "discord.js";
-import { CheckCommands } from "../middlewares/checkCommands";
-import { Command as Cmd } from "../utils/command";
-import { Config } from "../utils/config";
+import { MessageEmbed } from "discord.js";
+import { config } from "../main";
+import { isCommand } from "../middlewares/checkCommands";
+import { Command } from "../utils/command";
+import { HandledCommand } from "../utils/commandHandler";
 
-namespace Command {
-
-    function sendHelpOfCommand(command: Cmd.Command): MessageEmbed{
-        let embed: MessageEmbed = new MessageEmbed()
-        embed.setTitle(`====${command.name}====`)
-        embed.setDescription(`${command.usage}`)
-        if(command.param.length){
-            embed.addField("Paramètres", `${command.param.join(" ")}`)
-        }
-        embed.addField("Alias", `${command.aliases.join(", ")}`)
-        return embed
+function sendHelpOfCommand(command: Command): MessageEmbed {
+    let embed: MessageEmbed = new MessageEmbed()
+    embed.setTitle(`====${command.name}====`)
+    embed.setDescription(`${command.usage}`)
+    if (command.param.length) {
+        embed.addField("Paramètres", `${command.param.join(" ")}`)
     }
-
-    function sendHelp(): MessageEmbed{
-        let embed: MessageEmbed = new MessageEmbed()
-        embed.setTitle("====ASSITANCE MICROSOFT====")
-        embed.setDescription("Menu d'aide pour les différentes commandes")
-        Cmd.getAllCommands().forEach(cmd => {
-            embed.addField(cmd.name, `${cmd.command}`, true)
-        })
-        return embed
-    }
-
-    export function run(msg: Message, cmd: Cmd.Command, args?: Array<string>){
-        if(args?.length){
-            if(CheckCommands.isCommand(Config.PREFIX + args[0])){
-                msg.channel.send(sendHelpOfCommand(new Cmd.Command(args[0])))
-            }else{
-                msg.channel.send(`La commande \`${args[0]}\` n'existe pas !`)
-            }
-        }else{
-            msg.channel.send(sendHelp())
-        }
-    }
+    embed.addField("Alias", `${command.aliases.join(", ")}`)
+    return embed
 }
 
-export { Command }
+function sendHelp(): MessageEmbed {
+    let embed: MessageEmbed = new MessageEmbed()
+    embed.setTitle("====ASSITANCE MICROSOFT====")
+    embed.setDescription("Menu d'aide pour les différentes commandes")
+    Command.getAllCommands().forEach(cmd => {
+        embed.addField(cmd.name, `${cmd.command}`, true)
+    })
+    return embed
+}
+
+export function run(cmd: HandledCommand) {
+    if (cmd.args.length) {
+        if (isCommand(config.PREFIX + cmd.args[0])) {
+            cmd.msg.channel.send(sendHelpOfCommand(new Command(cmd.args[0])))
+        } else {
+            cmd.msg.channel.send(`La commande \`${cmd.args[0]}\` n'existe pas !`)
+        }
+    } else {
+        cmd.msg.channel.send(sendHelp())
+    }
+}

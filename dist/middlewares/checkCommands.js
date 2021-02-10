@@ -1,25 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CheckCommands = void 0;
+exports.isCommand = void 0;
+var main_1 = require("../main");
 var command_1 = require("../utils/command");
-var config_1 = require("../utils/config");
-var CheckCommands;
-(function (CheckCommands) {
-    function isCommand(command) {
-        if (!command.startsWith(config_1.Config.PREFIX)) {
-            return false;
-        }
-        else {
-            command = command.split(" ")[0].replace(config_1.Config.PREFIX, "");
-            for (var i = 0; i < command_1.Command.getAllCommands().length; i++) {
-                if (command_1.Command.getAllCommands()[i].command === command || command_1.Command.getAllCommands()[i].aliases.includes(command)) {
-                    return true;
-                }
+function isCommand(command) {
+    var res = false;
+    if (command.startsWith(main_1.config.PREFIX)) {
+        command = command.split(" ")[0].replace(main_1.config.PREFIX, '');
+        var i = 0;
+        while (i < command_1.Command.getAllCommands().length && !isCommand) {
+            if (command_1.Command.getAllCommands()[i].command === command || command_1.Command.getAllCommands()[i].aliases.includes(command)) {
+                res = true;
+            }
+            else {
+                i++;
             }
         }
-        return false;
     }
-    CheckCommands.isCommand = isCommand;
-})(CheckCommands || (CheckCommands = {}));
-exports.CheckCommands = CheckCommands;
+    return res;
+}
+exports.isCommand = isCommand;
 //# sourceMappingURL=checkCommands.js.map

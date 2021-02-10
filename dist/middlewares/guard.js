@@ -1,21 +1,25 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Guard = void 0;
-var Guard;
-(function (Guard) {
-    function checkPerm(member, cmd) {
-        var canExecute = false;
-        if (!cmd.rank.length) {
-            canExecute = true;
-        }
-        cmd.rank.forEach(function (id) {
-            if (member.roles.cache.find(function (r) { return r.id === id; })) {
+exports.checkPerm = void 0;
+function checkPerm(member, cmd) {
+    var canExecute = false;
+    //If no rank is supplied by default turn canExecute to true
+    if (!cmd.rank.length) {
+        canExecute = true;
+    }
+    else {
+        //Parse the ranks provided and foreach check if the member has the rank
+        var i_1 = 0;
+        while (i_1 < cmd.rank.length && !canExecute) {
+            if (member.roles.cache.find(function (r) { return r.id === cmd.rank[i_1]; })) {
                 canExecute = true;
             }
-        });
-        return canExecute;
+            else {
+                i_1++;
+            }
+        }
     }
-    Guard.checkPerm = checkPerm;
-})(Guard || (Guard = {}));
-exports.Guard = Guard;
+    return canExecute;
+}
+exports.checkPerm = checkPerm;
 //# sourceMappingURL=guard.js.map

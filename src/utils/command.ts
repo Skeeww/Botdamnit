@@ -1,45 +1,48 @@
-namespace Command {
 
-    export const rawCommands = require("../config/commands.json")
+import commandsFile from "../config/commands.json"
+import { config } from "../main"
+interface ICommand {
+    name: string
+    command: string
+    aliases: Array<string>
+    usage: string
+    param: Array<string>
+    rank: Array<string>
+}
 
-    interface ICommand {
-        name: string
-        command: string
-        aliases: Array<string>
-        usage: string
-        param: Array<string>
-        rank: Array<string>
-    }
-    
-    export class Command implements ICommand {
-        name: string = ""
-        command: string = ""
-        aliases: string[] = []
-        usage: string = ""
-        param: string[] = []
-        rank: string[] = []
+class Command implements ICommand {
+    name: string = ""
+    command: string = ""
+    aliases: string[] = []
+    usage: string = ""
+    param: string[] = []
+    rank: string[] = []
 
-        constructor(cmd: string) {
-            for(let i = 0; i < rawCommands.length; i++){
-                if(rawCommands[i].command === cmd || rawCommands[i].aliases.includes(cmd)){
-                    this.name = rawCommands[i].name as string,
-                    this.command = rawCommands[i].command as string,
-                    this.aliases = rawCommands[i].aliases as Array<string>,
-                    this.usage = rawCommands[i].usage as string,
-                    this.param = rawCommands[i].param as Array<string>
-                    this.rank = rawCommands[i].rank as Array<string>
-                }
+    constructor(cmd: string) {
+        let i = 0
+        let found = false
+        while (i < commandsFile.length && !found) {
+            if (cmd === commandsFile[i].command || commandsFile[i].aliases.includes(cmd)) {
+                this.name = commandsFile[i].name
+                this.command = commandsFile[i].command
+                this.aliases = commandsFile[i].aliases
+                this.usage = commandsFile[i].usage
+                this.param = commandsFile[i].param
+                this.rank = commandsFile[i].rank
+                found = true
+            } else {
+                i++;
             }
         }
     }
-    
-    export function getAllCommands(): Array<ICommand> {
-        let commands: Array<ICommand> = []
-        for(let i = 0; i < rawCommands.length; i++){
-            commands.push(rawCommands[i])
-        }
-        return commands
+
+    public static getAllCommands(): Array<ICommand> {
+        return commandsFile
+    }
+
+    public static extractCommand(content: string) {
+        return content.split(" ")[0].replace(config.PREFIX, '')
     }
 }
 
-export { Command }
+export { Command, ICommand }

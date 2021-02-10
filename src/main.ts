@@ -1,30 +1,39 @@
-import { Client } from 'discord.js'
+import { Client, GuildMember } from "discord.js"
+import { isCommand } from "./middlewares/checkCommands"
+import { checkPerm } from "./middlewares/guard"
+import { Presence } from "./modules/presence"
+import { Tick } from "./modules/tick"
+import { Twitch } from "./modules/twitch"
+import { Command } from "./utils/command"
+import { HandledCommand } from "./utils/commandHandler"
+import { Config } from "./utils/config"
 import { Debug } from "./utils/debug"
-import { Handler } from './utils/commandHandler'
-import { Config } from './utils/config'
-import { Tick } from './modules/tick'
-import { Presence } from './modules/presence'
-import { DirectMessage } from './utils/directMessage'
-import { Twitch } from './modules/twitch'
+import { DirectMessage } from "./utils/directMessage"
 
 process.env.TZ = 'Europe/Paris'
 
-export const client: Client = new Client()
+const config: Config = new Config()
+const client: Client = new Client()
 
 client.on("ready", () => {
-    require('./events/Reddit')
-    Debug.discord('\'ready\' event is triggered')
-    new Tick(parseInt(Config.TIME_BEFORE_CHANGE), [new Presence()]).run()
-    new Tick(600000, [new Twitch()]).run()
+    require("./events/index")
+    new Tick(10000, [new Twitch(), new Presence()]).run()
+    Debug.bot("Bot ready")
 })
 
 client.on("message", msg => {
-    if(msg.author.bot) return
-    (msg.channel.type === "dm") ? DirectMessage.handle(msg) : Handler.handle(msg)
+    if (msg.author.bot) return
+    if (msg.channel.type === "dm") {
+        DirectMessage.handle(msg)
+    } else if (isCommand(msg.content)) {
+        (checkPerm(msg.member!, new Command(Command.extractCommand(msg.content)))) ? new HandledCommand(msg) : msg.channel.send(config.PERMISSION_DENIED_MSG)
+    }
 })
 
-client.login(Config.BOT_TOKEN).then(() => {
+client.login(config.TOKEN).then(() => {
     Debug.discord('Connection established')
 }).catch(r => {
     Debug.discord(r)
 })
+
+export { client, config }

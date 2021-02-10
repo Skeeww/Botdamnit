@@ -1,20 +1,26 @@
+import { config } from "../main";
 import { Command } from "../utils/command";
-import { Config } from "../utils/config";
 
-namespace CheckCommands {
-    export function isCommand(command: string): boolean {
-        if (!command.startsWith(Config.PREFIX)){
-            return false
-        }else{
-            command = command.split(" ")[0].replace(Config.PREFIX, "")
-            for(let i = 0; i < Command.getAllCommands().length; i++){
-                if(Command.getAllCommands()[i].command === command || Command.getAllCommands()[i].aliases.includes(command)){
-                    return true
-                }
+function isCommand(command: string): boolean {
+
+    let res: boolean = false
+
+    if (command.startsWith(config.PREFIX)) {
+
+        command = command.split(" ")[0].replace(config.PREFIX, '')
+
+        let i = 0
+
+        while (i < Command.getAllCommands().length && !res) {
+            if (Command.getAllCommands()[i].command === command || Command.getAllCommands()[i].aliases.includes(command)) {
+                res = true
+            } else {
+                i++;
             }
         }
-        return false
+
     }
+    return res
 }
 
-export { CheckCommands }
+export { isCommand }

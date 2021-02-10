@@ -1,12 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Command = void 0;
-var Command;
-(function (Command) {
-    function run(msg, cmd, args) {
-        msg.content === "ping" ? msg.channel.send("Pong !") : msg.channel.send("Ping !");
-    }
-    Command.run = run;
-})(Command || (Command = {}));
-exports.Command = Command;
+exports.run = void 0;
+function run(cmd) {
+    cmd.msg.content === "ping" ? cmd.msg.channel.send("Pong !") : cmd.msg.channel.send("Ping !");
+}
+exports.run = run;
 //# sourceMappingURL=ping.js.map
