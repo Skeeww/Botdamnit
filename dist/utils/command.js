@@ -17,13 +17,14 @@ var Command = /** @class */ (function () {
         var i = 0;
         var found = false;
         while (i < commands_json_1.default.length && !found) {
-            if (cmd === commands_json_1.default[i].name || commands_json_1.default[i].aliases.includes(cmd)) {
+            if (cmd === commands_json_1.default[i].command || commands_json_1.default[i].aliases.includes(cmd)) {
                 this.name = commands_json_1.default[i].name;
                 this.command = commands_json_1.default[i].command;
                 this.aliases = commands_json_1.default[i].aliases;
                 this.usage = commands_json_1.default[i].usage;
                 this.param = commands_json_1.default[i].param;
                 this.rank = commands_json_1.default[i].rank;
+                found = true;
             }
             else {
                 i++;

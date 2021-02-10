@@ -42,7 +42,7 @@ function run(cmd) {
             cmd.msg.channel.send("Attention ! Les sondages doivent contenir entre 1 et 10 réponses");
             return;
         }
-        var poll = new Poll(cmd.args.pop() || "ERROR", cmd.args);
+        var poll = new Poll(cmd.args.pop(), cmd.args);
         poll.send();
         cmd.msg.channel.send("Sondage créé !");
     }

@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = void 0;
 var discord_js_1 = require("discord.js");
+var main_1 = require("../main");
 var checkCommands_1 = require("../middlewares/checkCommands");
 var command_1 = require("../utils/command");
 function sendHelpOfCommand(command) {
@@ -25,7 +26,7 @@ function sendHelp() {
 }
 function run(cmd) {
     if (cmd.args.length) {
-        if (checkCommands_1.isCommand(cmd.args[0])) {
+        if (checkCommands_1.isCommand(main_1.config.PREFIX + cmd.args[0])) {
             cmd.msg.channel.send(sendHelpOfCommand(new command_1.Command(cmd.args[0])));
         }
         else {

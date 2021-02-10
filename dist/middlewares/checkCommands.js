@@ -8,7 +8,7 @@ function isCommand(command) {
     if (command.startsWith(main_1.config.PREFIX)) {
         command = command.split(" ")[0].replace(main_1.config.PREFIX, '');
         var i = 0;
-        while (i < command_1.Command.getAllCommands().length && !isCommand) {
+        while (i < command_1.Command.getAllCommands().length && !res) {
             if (command_1.Command.getAllCommands()[i].command === command || command_1.Command.getAllCommands()[i].aliases.includes(command)) {
                 res = true;
             }
