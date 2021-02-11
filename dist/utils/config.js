@@ -17,8 +17,10 @@ var Config = /** @class */ (function () {
             SHARE: EnvConfig.SHARE,
             POLLS: EnvConfig.POLLS,
             MEME: EnvConfig.MEME,
+            ANO: EnvConfig.ANO
         };
         this.RANKS = {};
+        this.SALT = EnvConfig.SALT;
     }
     return Config;
 }());
