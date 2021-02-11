@@ -23,6 +23,6 @@ export function run(cmd: HandledCommand) {
                 break;
         }
     } else {
-        cmd.msg.channel.send(`La commande doit être sous la forme \`${config.PREFIX}${cmd.command.command}(ou ${cmd.command.aliases}) <type> <valeur>\``)
+        cmd.msg.channel.send(`La commande doit être sous la forme \`${config.PREFIX}${cmd.command}(ou ${cmd.command}) <type> <valeur>\``)
     }
 }

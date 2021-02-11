@@ -25,7 +25,7 @@ function run(cmd) {
         }
     }
     else {
-        cmd.msg.channel.send("La commande doit \u00EAtre sous la forme `" + main_1.config.PREFIX + cmd.command.command + "(ou " + cmd.command.aliases + ") <type> <valeur>`");
+        cmd.msg.channel.send("La commande doit \u00EAtre sous la forme `" + main_1.config.PREFIX + cmd.command + "(ou " + cmd.command + ") <type> <valeur>`");
     }
 }
 exports.run = run;

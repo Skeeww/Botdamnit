@@ -1,15 +1,17 @@
 import dotEnv, { DotenvParseOutput } from "dotenv";
 interface IConfig {
-    PREFIX: string;
-    PERMISSION_DENIED_MSG: string;
-    GUILD_ID: string;
+    PREFIX: string
+    PERMISSION_DENIED_MSG: string
+    GUILD_ID: string
+    SALT: string
     CHANNELS: {
-        ANNONCES: string;
-        SHARE: string;
-        POLLS: string;
-        MEME: string;
-    };
-    RANKS: {};
+        ANNONCES: string
+        SHARE: string
+        POLLS: string
+        MEME: string
+        ANO: string
+    }
+    RANKS: {}
 }
 
 class Config implements IConfig {
@@ -17,11 +19,13 @@ class Config implements IConfig {
     PREFIX: string
     PERMISSION_DENIED_MSG: string
     GUILD_ID: string
+    SALT: string
     CHANNELS: {
         ANNONCES: string
         SHARE: string
         POLLS: string
         MEME: string
+        ANO: string
     }
     RANKS: {}
 
@@ -37,9 +41,11 @@ class Config implements IConfig {
             SHARE: EnvConfig.SHARE,
             POLLS: EnvConfig.POLLS,
             MEME: EnvConfig.MEME,
+            ANO: EnvConfig.ANO
         }
         this.RANKS = {}
+        this.SALT = EnvConfig.SALT
     }
 }
 
-export { Config, IConfig }
+export { Config }

@@ -4,8 +4,8 @@ interface IModule {
 }
 
 class Tick {
-    freq: number
-    modules: Array<IModule>
+    private freq: number
+    private modules: Array<IModule>
 
     constructor(freq: number, modules: Array<IModule>){
         this.freq = freq

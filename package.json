@@ -1,22 +1,23 @@
 {
   "name": "botdamnit",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "A discord bot with amazing features",
   "main": "./dist/main.js",
   "repository": "git@gitlab.com:skewram/botdamnit.git",
   "author": "Noan <noan.perrot@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/debug": "^4.1.5",
     "@types/fluent-ffmpeg": "^2.1.16",
     "@types/jimp": "^0.2.28",
     "@types/moment": "^2.13.0",
     "@types/node": "^14.14.25",
     "axios": "^0.21.1",
+    "bcrypt": "^5.0.0",
     "bufferutil": "^4.0.3",
     "debug": "^4.3.1",
     "discord.js": "^12.5.1",
-    "discord.js-light": "^3.5.2",
     "dotenv": "^8.2.0",
     "fluent-ffmpeg": "^2.1.2",
     "googleapis": "^65.0.0",
@@ -25,5 +26,9 @@
     "moment": "^2.29.1",
     "pusher": "^4.0.2",
     "utf-8-validate": "^5.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node ./dist/main.js"
   }
 }
