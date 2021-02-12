@@ -1,16 +1,16 @@
-import { client } from "../main";
-import { IModule } from "./tick";
-
+import presence from "../config/presence.json"
+import { client } from "../main"
+import { IModule } from "./tick"
+import moment from "moment"
 class Presence implements IModule{
     name: string = "Presence"
     exec: Function = (freq: number) => {
-        const presence = require("../config/presence.json")
-        let date: Date = new Date()
+        const date: moment.Moment = moment()
         let i: number = 0
         setInterval(() => {
             if(i < presence.length){
                 client.user?.setActivity({
-                    name: presence[i] === "!DATE" ? `il est ${date.getHours()}h${date.getMinutes()}` : presence[i],
+                    name: presence[i] === "!DATE" ? `il est ${date.format("HH:mm")}` : presence[i],
                     type: "PLAYING",
                     url: "https://www.bigpapoo.fr"
                 })
