@@ -2,7 +2,6 @@ import { Client, GuildMember } from "discord.js"
 import { isCommand } from "./middlewares/checkCommands"
 import { checkPerm } from "./middlewares/guard"
 import { Presence } from "./modules/presence"
-import { Theo } from "./modules/theo"
 import { Tick } from "./modules/tick"
 import { Twitch } from "./modules/twitch"
 import { Command } from "./utils/command"
@@ -19,7 +18,6 @@ const client: Client = new Client()
 client.on("ready", async () => {
     require("./events/index")
     new Tick(10000, [new Twitch, new Presence]).run()
-    new Tick(60000, [new Theo]).run()
     Debug.bot("Bot ready")
 })
 
