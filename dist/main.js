@@ -41,7 +41,6 @@ var discord_js_1 = require("discord.js");
 var checkCommands_1 = require("./middlewares/checkCommands");
 var guard_1 = require("./middlewares/guard");
 var presence_1 = require("./modules/presence");
-var theo_1 = require("./modules/theo");
 var tick_1 = require("./modules/tick");
 var twitch_1 = require("./modules/twitch");
 var command_1 = require("./utils/command");
@@ -58,7 +57,6 @@ client.on("ready", function () { return __awaiter(void 0, void 0, void 0, functi
     return __generator(this, function (_a) {
         require("./events/index");
         new tick_1.Tick(10000, [new twitch_1.Twitch, new presence_1.Presence]).run();
-        new tick_1.Tick(60000, [new theo_1.Theo]).run();
         debug_1.Debug.bot("Bot ready");
         return [2 /*return*/];
     });

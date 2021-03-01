@@ -88,11 +88,11 @@
         "rank": []
     },
     {
-        "name": "Cat",
-        "command": "cat",
-        "aliases": ["chat", "catz"],
-        "usage": "Random photo de chat",
-        "param": [],
+        "name": "Animal",
+        "command": "animal",
+        "aliases": ["cat", "dog"],
+        "usage": "Random photo d'animaux",
+        "param": ["[ animal ]"],
         "rank": []
     }
 ]

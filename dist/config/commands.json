@@ -75,7 +75,7 @@
         "name": "Aide",
         "command": "help",
         "aliases": ["h", "hp"],
-        "usage": "Affiche l'aide complète ou d'une commande",
+        "usage": "Affiche la liste des commandes ou l'aide d'une commande",
         "param": ["commande"],
         "rank": []
     },
@@ -83,8 +83,16 @@
         "name": "Convert",
         "command": "convert",
         "aliases": ["conv", "cv"],
-        "usage": "Convertisseur binaire et ta mère",
+        "usage": "Convertisseur binaire et héxatruc",
         "param": ["type", "valeur"],
+        "rank": []
+    },
+    {
+        "name": "Animal",
+        "command": "animal",
+        "aliases": ["cat", "dog"],
+        "usage": "Random photo d'animaux",
+        "param": ["[ animal ]"],
         "rank": []
     }
 ]
