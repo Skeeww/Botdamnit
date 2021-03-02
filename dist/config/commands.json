@@ -90,9 +90,9 @@
     {
         "name": "Animal",
         "command": "animal",
-        "aliases": ["cat", "dog"],
+        "aliases": ["cat", "dog", "theo"],
         "usage": "Random photo d'animaux",
         "param": ["[ animal ]"],
-        "rank": []
+        "rank": ["790295244033228840"]
     }
 ]
