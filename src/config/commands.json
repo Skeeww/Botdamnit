@@ -94,5 +94,21 @@
         "usage": "Random photo d'animaux",
         "param": ["[ animal ]"],
         "rank": ["790295244033228840"]
+    },
+    {
+        "name": "IMDB",
+        "command": "imdb",
+        "aliases": [],
+        "usage": "Affiche des infos sur film/série d'après IMDB",
+        "param": ["[ query ]"],
+        "rank": []
+    },
+    {
+        "name": "YEET",
+        "command": "saygoodbye",
+        "aliases": [],
+        "usage": "ENORME",
+        "param": [""],
+        "rank": ["750980367128854590"]
     }
 ]

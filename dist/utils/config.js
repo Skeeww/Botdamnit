@@ -21,6 +21,7 @@ var Config = /** @class */ (function () {
         };
         this.RANKS = {};
         this.SALT = EnvConfig.SALT;
+        this.IMDB_API_KEY = EnvConfig.IMDB_API_KEY;
     }
     return Config;
 }());

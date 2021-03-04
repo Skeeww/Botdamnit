@@ -20,6 +20,7 @@ class Config implements IConfig {
     PERMISSION_DENIED_MSG: string
     GUILD_ID: string
     SALT: string
+    IMDB_API_KEY: string
     CHANNELS: {
         ANNONCES: string
         SHARE: string
@@ -45,6 +46,7 @@ class Config implements IConfig {
         }
         this.RANKS = {}
         this.SALT = EnvConfig.SALT
+        this.IMDB_API_KEY = EnvConfig.IMDB_API_KEY
     }
 }
 
