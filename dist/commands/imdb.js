@@ -11,31 +11,61 @@ function run(cmd) {
     if (cmd.args.length > 0) {
         var query_1 = cmd.args.join(", ").replace(", ", " ");
         axios_1.default.get("https://imdb-api.com/en/API/Search/" + main_1.config.IMDB_API_KEY + "/" + query_1).then(function (res) {
-            if (res.data.result[0] != undefined) {
-                axios_1.default.get("https://imdb-api.com/en/API/Title/" + main_1.config.IMDB_API_KEY + "/" + query_1).then(function (res) {
+            console.log(query_1);
+            if (res.data.results.length > 0) {
+                axios_1.default.get("https://imdb-api.com/en/API/Title/" + main_1.config.IMDB_API_KEY + "/" + res.data.results[0].id).then(function (res) {
                     var movie = res.data;
                     var embed = new discord_js_1.MessageEmbed({
-                        title: movie.title,
+                        title: movie.title || 'Titre introuvable',
+                        thumbnail: {
+                            url: movie.image || undefined
+                        },
                         fields: [
                             {
                                 name: "Genre",
-                                value: movie.type
+                                value: movie.genres || 'Non défini',
+                                inline: true
                             },
                             {
                                 name: "Année",
-                                value: movie.year
+                                value: movie.year || 'Inconnu',
+                                inline: true
                             },
                             {
                                 name: "Durée",
-                                value: movie.runtimeStr
+                                value: movie.runtimeStr || 'Inconnu',
+                                inline: true
+                            },
+                            {
+                                name: "Réalisateur(s)",
+                                value: movie.directors || 'Inconnu',
+                                inline: true
+                            },
+                            {
+                                name: "MetaCritic",
+                                value: (movie.metacriticRating || 'NaN') + "%",
+                                inline: true
+                            },
+                            {
+                                name: "Récompense(s)",
+                                value: movie.awards || 'Aucune',
+                                inline: true
+                            },
+                            {
+                                name: "Résumé",
+                                value: movie.plot || 'Inconnu',
+                                inline: false
                             }
                         ]
                     });
+                    cmd.msg.channel.send(embed);
                 }).catch(function (err) {
                     cmd.msg.channel.send("Erreur: `" + err + "`");
                 });
             }
-            cmd.msg.channel.send("```" + JSON.stringify(res.data).substr(0, 1000) + "```");
+            else {
+                cmd.msg.channel.send("Le film ou la série n'a pas été trouvé");
+            }
         }).catch(function (err) {
             cmd.msg.channel.send("Erreur: `" + err + "`");
         });

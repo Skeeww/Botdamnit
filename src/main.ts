@@ -1,4 +1,4 @@
-import { Client, GuildMember } from "discord.js"
+import { Client } from "discord.js"
 import { isCommand } from "./middlewares/checkCommands"
 import { checkPerm } from "./middlewares/guard"
 import { Presence } from "./modules/presence"
