@@ -1,12 +1,37 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DirectMessage = void 0;
-var main_1 = require("../main");
+var fs = __importStar(require("fs"));
 var DirectMessage;
 (function (DirectMessage) {
     function handle(msg) {
-        var _a;
-        ((_a = main_1.client.guilds.cache.find(function (g) { return g.id === main_1.config.GUILD_ID; })) === null || _a === void 0 ? void 0 : _a.channels.cache.find(function (c) { return c.id === main_1.config.CHANNELS.ANO; })).send(msg.content + "\n==========");
+        console.log(msg.author.username + ": " + msg.content);
+        fs.readFile("./banwords.txt", function (err, data) {
+            console.log(data);
+        });
+        console.log(msg.content.indexOf('pute'));
+        /*(client.guilds.cache.find(g => g.id === config.GUILD_ID)?.channels.cache.find(c => c.id === config.CHANNELS.ANO) as TextChannel).send(
+            `${msg.content}\n==========`
+        )*/
     }
     DirectMessage.handle = handle;
 })(DirectMessage || (DirectMessage = {}));

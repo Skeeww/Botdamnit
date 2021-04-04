@@ -1,7 +1,7 @@
 import { client, config } from "../main";
 import { Debug } from "../utils/debug";
 
-namespace Event {
+export namespace Reddit {
     Debug.bot("[Reddit] event loaded")
 
     client.on("messageReactionAdd", (react) => {
@@ -28,5 +28,3 @@ namespace Event {
         }
     })
 }
-
-export { Event }

@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Event = void 0;
+exports.Reddit = void 0;
 var main_1 = require("../main");
 var debug_1 = require("../utils/debug");
-var Event;
-(function (Event) {
+var Reddit;
+(function (Reddit) {
     debug_1.Debug.bot("[Reddit] event loaded");
     main_1.client.on("messageReactionAdd", function (react) {
         if (react.emoji.name === "upvote" && (react.count || 0) >= 20) {
@@ -30,6 +30,5 @@ var Event;
             });
         }
     });
-})(Event || (Event = {}));
-exports.Event = Event;
+})(Reddit = exports.Reddit || (exports.Reddit = {}));
 //# sourceMappingURL=Reddit.js.map

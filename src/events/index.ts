@@ -1,1 +1,2 @@
-export { Event } from "./Reddit"
+export { Reddit } from "./Reddit"
+export { Yseult } from "./Yseult"

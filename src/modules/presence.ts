@@ -10,8 +10,7 @@ class Presence implements IModule{
             if(i < presence.length){
                 client.user?.setActivity({
                     name: presence[i] === "!DATE" ? `il est ${moment().format("HH:mm")}` : presence[i],
-                    type: "PLAYING",
-                    url: "https://www.bigpapoo.fr"
+                    type: "PLAYING"
                 })
                 i++
             }else{
