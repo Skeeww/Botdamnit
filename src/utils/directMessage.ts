@@ -13,7 +13,7 @@ namespace DirectMessage {
         let found: boolean = false
         let i: number = 0
         while(!found && i < banwords.length){
-            if(msg.content.indexOf(banwords[i]) != -1){
+            if(msg.content.toLowerCase().replace(' ', '').indexOf(banwords[i]) != -1){
                 found = true
             }else{
                 i++
