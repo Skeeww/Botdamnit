@@ -5,7 +5,7 @@ import { client, config } from "../main"
 namespace DirectMessage {
     let banwords: Array<string> = new Array()
 
-    banwords = fs.readFileSync("./banwords.txt").toString().split('\r\n')
+    banwords = fs.readFileSync("./banwords.txt").toString().replace('\r', '').split('\n')
 
     console.log(banwords)
 

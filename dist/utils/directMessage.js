@@ -25,7 +25,7 @@ var main_1 = require("../main");
 var DirectMessage;
 (function (DirectMessage) {
     var banwords = new Array();
-    banwords = fs.readFileSync("./banwords.txt").toString().split('\r\n');
+    banwords = fs.readFileSync("./banwords.txt").toString().replace('\r', '').split('\n');
     console.log(banwords);
     function handle(msg) {
         var _a;
