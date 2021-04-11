@@ -7,6 +7,8 @@ namespace DirectMessage {
 
     banwords = fs.readFileSync("./banwords.txt").toString().split('\r\n')
 
+    console.log(banwords)
+
     export function handle(msg: Message){
         let found: boolean = false
         let i: number = 0
