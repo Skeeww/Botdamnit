@@ -26,6 +26,7 @@ var DirectMessage;
 (function (DirectMessage) {
     var banwords = new Array();
     banwords = fs.readFileSync("./banwords.txt").toString().split('\r\n');
+    console.log(banwords);
     function handle(msg) {
         var _a;
         var found = false;
