@@ -12,13 +12,13 @@ class Tick {
     constructor(freq: number, modules: Array<IModule>){
         this.freq = freq
         this.modules = modules
-        this.modules.forEach(m => {
+        this.modules.forEach((m) => {
             Debug.bot(`[${m.name}] module loaded`)
         })
     }
 
     run(){
-        this.modules.forEach(m => {
+        this.modules.forEach((m) => {
             m.exec(this.freq)
         })
     }

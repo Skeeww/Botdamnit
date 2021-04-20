@@ -7,11 +7,11 @@ var Yseult;
 (function (Yseult) {
     debug_1.Debug.bot("[Yseult] event loaded");
     var yseultedUser = new Array();
-    main_1.client.on("messageReactionAdd", function (react, user) {
+    main_1.client.on("messageReactionAdd", function (react) {
         var _a;
         if (react.emoji.name === "yseult" && react.count == 8 && !yseultedUser.includes(react.message)) {
-            react.message.reply("**F\u00E9licitation** ! Ton message a \u00E9t\u00E9 jug\u00E9 cringe ce qui est un crime passible de 5ans de r\u00E9clusion dans le groupe bisounours.");
-            (_a = react.message.author.dmChannel) === null || _a === void 0 ? void 0 : _a.send("Afin de purger ta peine nous t'invitons \u00E0 rejoindre ce serveur: https://discord.gg/KpDKVBYn");
+            react.message.reply("**Félicitation** ! Ton message a été jugé cringe ce qui est un crime passible de 5ans de réclusion dans le groupe bisounours.");
+            (_a = react.message.author.dmChannel) === null || _a === void 0 ? void 0 : _a.send("Afin de purger ta peine nous t'invitons à rejoindre ce serveur: https://discord.gg/KpDKVBYn");
             yseultedUser.push(react.message);
         }
     });

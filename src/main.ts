@@ -21,8 +21,8 @@ client.on("ready", async () => {
     Debug.bot("Bot ready")
 })
 
-client.on("message", async msg => {
-    if (msg.author.bot) return
+client.on("message", async (msg) => {
+    if (msg.author.bot){ return }
     if (msg.channel.type === "dm") {
         DirectMessage.handle(msg)
     } else if (isCommand(msg.content)) {
@@ -32,7 +32,7 @@ client.on("message", async msg => {
 
 client.login(config.TOKEN).then(() => {
     Debug.discord('Connection established')
-}).catch(r => {
+}).catch((r) => {
     Debug.discord(r)
 })
 

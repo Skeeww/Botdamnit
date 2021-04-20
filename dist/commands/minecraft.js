@@ -20,7 +20,7 @@ function run(cmd) {
         embed.addField("Version:", res.version, true);
         embed.setColor(0x00ff00);
         cmd.msg.channel.send(embed);
-    }).catch(function (r) {
+    }).catch(function () {
         var embed = new discord_js_1.MessageEmbed();
         embed.setTitle(ip.split(":")[0] + ":" + (ip.split(":")[1] || 25565));
         embed.setDescription("Serveur inaccessible");

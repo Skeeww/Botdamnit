@@ -5,7 +5,7 @@ var main_1 = require("../main");
 function run(cmd) {
     if (cmd.args.length >= 2) {
         var type = cmd.args.shift();
-        var payload = cmd.args.join('').toUpperCase();
+        var payload = cmd.args.join("").toUpperCase();
         switch (type) {
             case "bin2hex":
                 cmd.msg.channel.send("`" + payload + "` (2) => `" + parseInt(payload, 2).toString(16).toUpperCase() + "` (16)");
