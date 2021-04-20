@@ -40,14 +40,6 @@
         "rank": []
     },
     {
-        "name": "Orthographe",
-        "command": "orthographe",
-        "aliases": ["oph", "ortho"],
-        "usage": "Fait attention à l'orthographe",
-        "param": [],
-        "rank": []
-    },
-    {
         "name": "Shittify",
         "command": "shittify",
         "aliases": ["shitty"],
