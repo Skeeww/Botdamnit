@@ -20,6 +20,7 @@
     "dotenv": "^8.2.0",
     "fluent-ffmpeg": "^2.1.2",
     "googleapis": "^65.0.0",
+    "istanbul": "^0.4.5",
     "jimp": "^0.16.1",
     "minecraft-server-util": "^3.4.4",
     "moment": "^2.29.1",

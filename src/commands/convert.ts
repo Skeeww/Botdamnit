@@ -4,7 +4,7 @@ import { HandledCommand } from "../utils/commandHandler";
 export function run(cmd: HandledCommand) {
     if (cmd.args.length >= 2) {
         const type = cmd.args.shift()
-        const payload = cmd.args.join('').toUpperCase()
+        const payload = cmd.args.join("").toUpperCase()
         switch (type) {
             case "bin2hex":
                 cmd.msg.channel.send(`\`${payload}\` (2) => \`${parseInt(payload, 2).toString(16).toUpperCase()}\` (16)`)

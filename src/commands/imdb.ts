@@ -23,10 +23,10 @@ interface IMDB {
 export function run(cmd: HandledCommand) {
     if (cmd.args.length > 0) {
         const query: string = cmd.args.join(", ").replace(", ", " ")
-        axios.get(`https://imdb-api.com/en/API/Search/${config.IMDB_API_KEY}/${query}`).then(res => {
+        axios.get(`https://imdb-api.com/en/API/Search/${config.IMDB_API_KEY}/${query}`).then((res) => {
             console.log(query)
             if (res.data.results.length > 0) {
-                axios.get(`https://imdb-api.com/en/API/Title/${config.IMDB_API_KEY}/${res.data.results[0].id}`).then(res => {
+                axios.get(`https://imdb-api.com/en/API/Title/${config.IMDB_API_KEY}/${res.data.results[0].id}`).then((res) => {
                     const movie: IMDB = res.data
                     const embed: MessageEmbed = new MessageEmbed({
                         title: movie.title || 'Titre introuvable',
@@ -72,13 +72,13 @@ export function run(cmd: HandledCommand) {
                         ]
                     })
                     cmd.msg.channel.send(embed)
-                }).catch(err => {
+                }).catch((err) => {
                     cmd.msg.channel.send(`Erreur: \`${err}\``)
                 })
             } else {
                 cmd.msg.channel.send("Le film ou la série n'a pas été trouvé")
             }
-        }).catch(err => {
+        }).catch((err) => {
             cmd.msg.channel.send(`Erreur: \`${err}\``)
         })
     } else {

@@ -7,7 +7,7 @@ const font: string = Jimp.FONT_SANS_32_WHITE
 
 export function run(cmd: HandledCommand) {
     if ((cmd.args.join(" ") || "").length < 20) {
-        Jimp.read("./src/assets/renaud.png").then(img => {
+        Jimp.read("./src/assets/renaud.png").then((img) => {
             Jimp.loadFont(font).then(f => {
                 img.print(f, 305, 280, {
                     text: cmd.args.join(" "),
@@ -29,7 +29,7 @@ export function run(cmd: HandledCommand) {
                     })
                 })
             })
-        }).catch(err => {
+        }).catch((err) => {
             cmd.msg.channel.send("Fuck une erreur est survenu ! *send uwu in the chat*\n```" + err + "```")
         })
     } else {
