@@ -1,0 +1,106 @@
+[
+    {
+        "name": "Ping",
+        "command": "ping",
+        "aliases": ["pg", "pong"],
+        "usage": "Commande de test pour vérifier le bon fonctionnement du bot",
+        "param": ["number", "message"],
+        "rank": []
+    },
+    {
+        "name": "Minecraft",
+        "command": "minecraft",
+        "aliases": ["mc"],
+        "usage": "Status du serveur Minecraft passer en paramètre",
+        "param": ["ip_du_serveur"],
+        "rank": []
+    },
+    {
+        "name": "Among Us",
+        "command": "amongus",
+        "aliases": ["amus"],
+        "usage": "Vérifie si une personne est l'imposteur ou non",
+        "param": ["[ texte ]"],
+        "rank": []
+    },
+    {
+        "name": "Clear",
+        "command": "clear",
+        "aliases": ["cl"],
+        "usage": "Supprime un nombre définit de messages (100 par défaut)",
+        "param": ["[ nombre_de_messages ]"],
+        "rank": ["750980367128854590"]
+    },
+    {
+        "name": "Poll",
+        "command": "poll",
+        "aliases": ["pl"],
+        "usage": "Créer un sondage",
+        "param": ["<choix 1>, <choix 2>, <choix n>, <question>"],
+        "rank": []
+    },
+    {
+        "name": "Shittify",
+        "command": "shittify",
+        "aliases": ["shitty"],
+        "usage": "Emojifie tes messages",
+        "param": ["<message>"],
+        "rank": []
+    },
+    {
+        "name": "Il fait chaud",
+        "command": "ilfaitunechaleur",
+        "aliases": [],
+        "usage": "Slowdown le channel",
+        "param": [],
+        "rank": ["750980367128854590"]
+    },
+    {
+        "name": "Renaud",
+        "command": "renaud",
+        "aliases": [],
+        "usage": "Connard de",
+        "param": ["<message>"],
+        "rank": []
+    },
+    {
+        "name": "Aide",
+        "command": "help",
+        "aliases": ["h", "hp"],
+        "usage": "Affiche la liste des commandes ou l'aide d'une commande",
+        "param": ["commande"],
+        "rank": []
+    },
+    {
+        "name": "Convert",
+        "command": "convert",
+        "aliases": ["conv", "cv"],
+        "usage": "Convertisseur binaire et héxatruc",
+        "param": ["type", "valeur"],
+        "rank": []
+    },
+    {
+        "name": "Animal",
+        "command": "animal",
+        "aliases": ["cat", "dog", "theo"],
+        "usage": "Random photo d'animaux",
+        "param": ["[ animal ]"],
+        "rank": ["790295244033228840"]
+    },
+    {
+        "name": "IMDB",
+        "command": "imdb",
+        "aliases": ["film", "serie"],
+        "usage": "Affiche des infos sur film/série d'après IMDB",
+        "param": ["[ query ]"],
+        "rank": []
+    },
+    {
+        "name": "Cache",
+        "command": "cache",
+        "aliases": [],
+        "usage": "Met en cache un message",
+        "param": ["[ id_du_message ]"],
+        "rank": []
+    }
+]
