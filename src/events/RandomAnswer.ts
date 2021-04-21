@@ -7,12 +7,12 @@ export namespace RandomAnswer {
     client.on("message", msg => {
         if(msg.author.bot) return
         const odd = Math.random();
-        if(odd < 0.02){
-            msg.channel.send(`FUCK TOI ${msg.author.username} MOI JE PENSE QUE ${msg.content}`)
-        }else if(odd >= 0.02 && odd < 0.04){
-            msg.channel.send(`En vrai ${msg.author.username} tu devrais écouter VALD`)
-        }else if(odd >= 0.04 && odd < 0.08){
-            msg.channel.send(`${msg.author.username} zap ni la un ni la dos ni la tres`)
+        if(odd < 0.002){
+            msg.channel.send(`AH OUAIS ${msg.author.username} ?! ${msg.content.toUpperCase()}`)
+        }else if(odd >= 0.002 && odd < 0.004){
+            msg.channel.send(`${msg.author.username} tu viens vraiment de dire ça sur ${msg.guild?.members.cache.random().displayName} !!!!`)
+        }else if(odd >= 0.004 && odd < 0.008){
+            msg.channel.send(`${msg.author.username} en vrai ce que tu dis est interessant`)
         }
     })
 }

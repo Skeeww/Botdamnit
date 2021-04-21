@@ -10,6 +10,7 @@ interface IConfig {
         POLLS: string
         MEME: string
         ANO: string
+        RECURENCE: string
     }
     RANKS: {}
 }
@@ -27,8 +28,10 @@ class Config implements IConfig {
         POLLS: string
         MEME: string
         ANO: string
+        RECURENCE: string
     }
     RANKS: {}
+
 
     constructor() {
         const EnvConfig: DotenvParseOutput = dotEnv.config().parsed as DotenvParseOutput;
@@ -42,7 +45,8 @@ class Config implements IConfig {
             SHARE: EnvConfig.SHARE,
             POLLS: EnvConfig.POLLS,
             MEME: EnvConfig.MEME,
-            ANO: EnvConfig.ANO
+            ANO: EnvConfig.ANO,
+            RECURENCE: EnvConfig.RECURENCE
         }
         this.RANKS = {}
         this.SALT = EnvConfig.SALT
