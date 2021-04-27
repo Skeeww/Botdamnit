@@ -1,26 +1,10 @@
 import dotEnv, { DotenvParseOutput } from "dotenv";
-interface IConfig {
-    PREFIX: string
-    PERMISSION_DENIED_MSG: string
-    GUILD_ID: string
-    SALT: string
-    CHANNELS: {
-        ANNONCES: string
-        SHARE: string
-        POLLS: string
-        MEME: string
-        ANO: string
-        RECURENCE: string
-    }
-    RANKS: {}
-}
 
-class Config implements IConfig {
+class Config {
     TOKEN: string
     PREFIX: string
     PERMISSION_DENIED_MSG: string
     GUILD_ID: string
-    SALT: string
     IMDB_API_KEY: string
     CHANNELS: {
         ANNONCES: string
@@ -49,7 +33,6 @@ class Config implements IConfig {
             RECURENCE: EnvConfig.RECURENCE
         }
         this.RANKS = {}
-        this.SALT = EnvConfig.SALT
         this.IMDB_API_KEY = EnvConfig.IMDB_API_KEY
     }
 }
