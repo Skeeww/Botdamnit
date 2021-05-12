@@ -36,9 +36,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.db = exports.config = exports.client = void 0;
+exports.config = exports.client = void 0;
 var discord_js_1 = require("discord.js");
-var sqlite3_1 = require("sqlite3");
 var checkCommands_1 = require("./middlewares/checkCommands");
 var guard_1 = require("./middlewares/guard");
 var presence_1 = require("./modules/presence");
@@ -47,7 +46,6 @@ var twitch_1 = require("./modules/twitch");
 var command_1 = require("./utils/command");
 var commandHandler_1 = require("./utils/commandHandler");
 var config_1 = require("./utils/config");
-var database_1 = require("./utils/database");
 var debug_1 = require("./utils/debug");
 var directMessage_1 = require("./utils/directMessage");
 process.env.TZ = 'Europe/Paris';
@@ -55,13 +53,10 @@ var config = new config_1.Config();
 exports.config = config;
 var client = new discord_js_1.Client();
 exports.client = client;
-var db = new sqlite3_1.Database("./storage.db");
-exports.db = db;
 client.on("ready", function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         require("./events/index");
         new tick_1.Tick(10000, [new twitch_1.Twitch, new presence_1.Presence]).run();
-        database_1.DatabaseUtil.run(db, "CREATE TABLE IF NOT EXISTS bot(id INTEGER PRIMARY KEY AUTOINCREMENT, nb_suite INTEGER)");
         debug_1.Debug.bot("Bot ready");
         return [2 /*return*/];
     });
