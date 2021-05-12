@@ -1,5 +1,4 @@
 import { Client } from "discord.js"
-import { Database } from "sqlite3"
 import { isCommand } from "./middlewares/checkCommands"
 import { checkPerm } from "./middlewares/guard"
 import { Presence } from "./modules/presence"
@@ -8,7 +7,6 @@ import { Twitch } from "./modules/twitch"
 import { Command } from "./utils/command"
 import { HandledCommand } from "./utils/commandHandler"
 import { Config } from "./utils/config"
-import { DatabaseUtil } from "./utils/database"
 import { Debug } from "./utils/debug"
 import { DirectMessage } from "./utils/directMessage"
 
@@ -16,12 +14,10 @@ process.env.TZ = 'Europe/Paris'
 
 const config: Config = new Config()
 const client: Client = new Client()
-const db: Database = new Database("./storage.db")
 
 client.on("ready", async () => {
     require("./events/index")
     new Tick(10000, [new Twitch, new Presence]).run()
-    DatabaseUtil.run(db, "CREATE TABLE IF NOT EXISTS bot(id INTEGER PRIMARY KEY AUTOINCREMENT, nb_suite INTEGER)")
     Debug.bot("Bot ready")
 })
 
@@ -40,4 +36,4 @@ client.login(config.TOKEN).then(() => {
     Debug.discord(r)
 })
 
-export { client, config, db }
+export { client, config }
