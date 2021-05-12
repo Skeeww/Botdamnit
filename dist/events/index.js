@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Suite = exports.RandomAnswer = exports.Yseult = exports.Reddit = void 0;
 var Reddit_1 = require("./Reddit");
 Object.defineProperty(exports, "Reddit", { enumerable: true, get: function () { return Reddit_1.Reddit; } });
 var Yseult_1 = require("./Yseult");

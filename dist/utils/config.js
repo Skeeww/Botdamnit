@@ -21,7 +21,6 @@ var Config = /** @class */ (function () {
             RECURENCE: EnvConfig.RECURENCE
         };
         this.RANKS = {};
-        this.SALT = EnvConfig.SALT;
         this.IMDB_API_KEY = EnvConfig.IMDB_API_KEY;
     }
     return Config;

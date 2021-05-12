@@ -82,7 +82,7 @@
     {
         "name": "Animal",
         "command": "animal",
-        "aliases": ["cat", "dog", "theo"],
+        "aliases": ["cat", "dog"],
         "usage": "Random photo d'animaux",
         "param": ["[ animal ]"],
         "rank": ["790295244033228840"]
@@ -101,6 +101,14 @@
         "aliases": [],
         "usage": "Met en cache un message",
         "param": ["[ id_du_message ]"],
+        "rank": []
+    },
+    {
+        "name": "Hommies",
+        "command": "hommies",
+        "aliases": ["maisonneux", "maison"],
+        "usage": "Encyclopédie des maisonneux",
+        "param": [],
         "rank": []
     }
 ]
