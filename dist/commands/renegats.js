@@ -23,12 +23,12 @@ exports.run = void 0;
 var fs = __importStar(require("fs"));
 var discord_js_1 = require("discord.js");
 function run(cmd) {
-    fs.readdir("./src/hidden/", {}, function (err, files) {
+    fs.readdir("./src/hidden/renegats", {}, function (err, files) {
         if (err)
             throw err;
         if (files.length <= 0)
             discord_js_1.ReactionUserManager;
-        fs.readFile("./src/hidden/" + files[Math.floor(Math.random() * (files.length))], function (err, data) {
+        fs.readFile("./src/hidden/renegats/" + files[Math.floor(Math.random() * (files.length))], function (err, data) {
             if (err)
                 throw err;
             cmd.msg.channel.send(new discord_js_1.MessageAttachment(data));
@@ -36,4 +36,4 @@ function run(cmd) {
     });
 }
 exports.run = run;
-//# sourceMappingURL=hommies.js.map
+//# sourceMappingURL=renegats.js.map

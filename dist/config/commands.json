@@ -110,5 +110,13 @@
         "usage": "Encyclopédie des maisonneux",
         "param": [],
         "rank": []
+    },
+    {
+        "name": "Renégats",
+        "command": "renegats",
+        "aliases": ["rené", "renegat", "rene"],
+        "usage": "Encyclopédie des renégats",
+        "param": [],
+        "rank": []
     }
 ]
