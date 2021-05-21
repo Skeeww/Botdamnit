@@ -118,5 +118,21 @@
         "usage": "Encyclopédie des renégats",
         "param": [],
         "rank": []
+    },
+    {
+        "name": "QR",
+        "command": "qr",
+        "aliases": ["qrcode"],
+        "usage": "Générer un QR Code",
+        "param": ["<texte|lien>"],
+        "rank": []
+    },
+    {
+        "name": "URL Checker",
+        "command": "site_checker",
+        "aliases": ["check", "isup", "isdown", "urlcheck"],
+        "usage": "Vérifie si un lien est accessible",
+        "param": ["<url>"],
+        "rank": []
     }
 ]
