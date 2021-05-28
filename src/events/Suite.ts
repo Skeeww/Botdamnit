@@ -13,6 +13,10 @@ export namespace Suite {
             msg.react('✅')
             n++
         }else{
+            if(n >= 100){
+                client.guilds.resolve(config.GUILD_ID)?.members.resolve(msg.author.id)?.kick("Image ne pas savoir compter")
+                msg.channel.send(`Salut ${msg.author.username} !`)
+            }
             msg.react('❌')
             msg.channel.send(`Série de ${n} !`)
             n = 0
