@@ -18,7 +18,8 @@ var Config = /** @class */ (function () {
             POLLS: EnvConfig.POLLS,
             MEME: EnvConfig.MEME,
             ANO: EnvConfig.ANO,
-            RECURENCE: EnvConfig.RECURENCE
+            RECURENCE: EnvConfig.RECURENCE,
+            KAPI_RADIO: EnvConfig.KAPI_RADIO
         };
         this.RANKS = {};
         this.IMDB_API_KEY = EnvConfig.IMDB_API_KEY;
