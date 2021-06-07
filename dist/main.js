@@ -48,6 +48,7 @@ var commandHandler_1 = require("./utils/commandHandler");
 var config_1 = require("./utils/config");
 var debug_1 = require("./utils/debug");
 var directMessage_1 = require("./utils/directMessage");
+var kapiradio_1 = require("./utils/kapiradio");
 process.env.TZ = 'Europe/Paris';
 var config = new config_1.Config();
 exports.config = config;
@@ -57,6 +58,10 @@ client.on("ready", function () { return __awaiter(void 0, void 0, void 0, functi
     return __generator(this, function (_a) {
         require("./events/index");
         new tick_1.Tick(10000, [new twitch_1.Twitch, new presence_1.Presence]).run();
+        /*
+         *  Kapi Radio
+         */
+        kapiradio_1.KapiRadio.run();
         debug_1.Debug.bot("Bot ready");
         return [2 /*return*/];
     });

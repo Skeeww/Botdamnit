@@ -12,9 +12,10 @@ class Config {
         POLLS: string
         MEME: string
         ANO: string
-        RECURENCE: string
+        RECURENCE: string,
+        KAPI_RADIO: string
     }
-    RANKS: {}
+    private RANKS: {}
 
 
     constructor() {
@@ -30,7 +31,8 @@ class Config {
             POLLS: EnvConfig.POLLS,
             MEME: EnvConfig.MEME,
             ANO: EnvConfig.ANO,
-            RECURENCE: EnvConfig.RECURENCE
+            RECURENCE: EnvConfig.RECURENCE,
+            KAPI_RADIO: EnvConfig.KAPI_RADIO
         }
         this.RANKS = {}
         this.IMDB_API_KEY = EnvConfig.IMDB_API_KEY
