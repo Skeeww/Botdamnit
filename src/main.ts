@@ -23,7 +23,7 @@ client.on("ready", async () => {
     /*
      *  Kapi Radio
      */
-    KapiRadio.run()
+    //KapiRadio.run()
 
     Debug.bot("Bot ready")
 })

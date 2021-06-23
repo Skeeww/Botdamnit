@@ -134,5 +134,13 @@
         "usage": "Vérifie si un lien est accessible",
         "param": ["<url>"],
         "rank": []
+    },
+    {
+        "name": "Nederex",
+        "command": "nederex",
+        "aliases": [],
+        "usage": "Vérifie si tu as tricher ou non",
+        "param": ["<message>"],
+        "rank": []
     }
 ]
