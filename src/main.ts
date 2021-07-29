@@ -9,7 +9,6 @@ import { HandledCommand } from "./utils/commandHandler"
 import { Config } from "./utils/config"
 import { Debug } from "./utils/debug"
 import { DirectMessage } from "./utils/directMessage"
-import { KapiRadio } from "./utils/kapiradio"
 
 process.env.TZ = 'Europe/Paris'
 
@@ -19,12 +18,6 @@ const client: Client = new Client()
 client.on("ready", async () => {
     require("./events/index")
     new Tick(10000, [new Twitch, new Presence]).run()
-
-    /*
-     *  Kapi Radio
-     */
-    KapiRadio.run()
-
     Debug.bot("Bot ready")
 })
 

@@ -12,6 +12,7 @@ var Config = /** @class */ (function () {
         this.PREFIX = EnvConfig.PREFIX;
         this.PERMISSION_DENIED_MSG = EnvConfig.PERMISSION_DENIED_MSG;
         this.GUILD_ID = EnvConfig.GUILD_ID;
+        this.OPENAI_API = EnvConfig.OPENAI_API;
         this.CHANNELS = {
             ANNONCES: EnvConfig.ANNONCES,
             SHARE: EnvConfig.SHARE,
