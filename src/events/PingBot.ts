@@ -8,7 +8,7 @@ export namespace PingBot {
     let last_command_exec = new Date()
 
     client.on("message", msg => {
-        if(!msg.author.bot && msg.mentions.users.has(client.user?.id!)){
+        if(!msg.author.bot && msg.content.startsWith("diantre ?")){
             const now = new Date().getTime()
             if(now - last_command_exec.getTime() > 5000){
                 last_command_exec = new Date()
