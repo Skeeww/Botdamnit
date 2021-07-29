@@ -12,8 +12,7 @@ var PingBot;
     debug_1.Debug.bot("[PingBot] event loaded");
     var last_command_exec = new Date();
     main_1.client.on("message", function (msg) {
-        var _a;
-        if (!msg.author.bot && msg.mentions.users.has((_a = main_1.client.user) === null || _a === void 0 ? void 0 : _a.id)) {
+        if (!msg.author.bot && msg.content.startsWith("diantre ?")) {
             var now = new Date().getTime();
             if (now - last_command_exec.getTime() > 5000) {
                 last_command_exec = new Date();
