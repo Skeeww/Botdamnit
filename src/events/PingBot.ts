@@ -10,7 +10,7 @@ export namespace PingBot {
     client.on("message", msg => {
         if(!msg.author.bot && msg.mentions.users.has(client.user?.id!)){
             const now = new Date().getTime()
-            if(now - last_command_exec.getTime() > 60000){
+            if(now - last_command_exec.getTime() > 5000){
                 last_command_exec = new Date()
                 
                 const payload = msg.content.replace(/<@(.*?)>/g, "")
@@ -31,7 +31,7 @@ export namespace PingBot {
                     msg.reply(res.data.choices[0].text ?? "je ne sais quoi te répondre face à cela")
                 }).catch(() => msg.reply("Sorry je sleep"))
             }else{
-                msg.reply(`Attends laisse moi ${Math.round((60000 - (now - last_command_exec.getTime())) / 1000)} secondes`)
+                msg.reply(`Attends laisse moi ${Math.round((5000 - (now - last_command_exec.getTime())) / 1000)} secondes`)
             }
         }
     })
