@@ -1,18 +1,4 @@
 "use strict";
-/*
-curl https://api.openai.com/v1/engines/ada/completions \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-  "prompt": "Salut comment tu vas ?\nBWOAT: Je vais bien.",
-  "temperature": 0,
-  "max_tokens": 128,
-  "top_p": 1,
-  "frequency_penalty": 0,
-  "presence_penalty": 0,
-  "stop": ["\n"]
-}'
-*/
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -29,10 +15,10 @@ var PingBot;
         var _a;
         if (!msg.author.bot && msg.mentions.users.has((_a = main_1.client.user) === null || _a === void 0 ? void 0 : _a.id)) {
             var now = new Date().getTime();
-            if (now - last_command_exec.getTime() > 10000) {
+            if (now - last_command_exec.getTime() > 60000) {
                 last_command_exec = new Date();
                 var payload = msg.content.replace(/<@(.*?)>/g, "");
-                axios_1.default.post("https://api.openai.com/v1/engines/ada/completions", {
+                axios_1.default.post("https://api.openai.com/v1/engines/davinci/completions", {
                     "prompt": payload + "\nBWOAT: ",
                     "temperature": 0,
                     "max_tokens": 80,
@@ -51,7 +37,7 @@ var PingBot;
                 }).catch(function () { return msg.reply("Sorry je sleep"); });
             }
             else {
-                msg.reply("Attends laisse moi " + Math.round((10000 - (now - last_command_exec.getTime())) / 1000) + " secondes");
+                msg.reply("Attends laisse moi " + Math.round((60000 - (now - last_command_exec.getTime())) / 1000) + " secondes");
             }
         }
     });
