@@ -15,7 +15,7 @@ var PingBot;
         var _a;
         if (!msg.author.bot && msg.mentions.users.has((_a = main_1.client.user) === null || _a === void 0 ? void 0 : _a.id)) {
             var now = new Date().getTime();
-            if (now - last_command_exec.getTime() > 60000) {
+            if (now - last_command_exec.getTime() > 5000) {
                 last_command_exec = new Date();
                 var payload = msg.content.replace(/<@(.*?)>/g, "");
                 axios_1.default.post("https://api.openai.com/v1/engines/davinci/completions", {
@@ -37,7 +37,7 @@ var PingBot;
                 }).catch(function () { return msg.reply("Sorry je sleep"); });
             }
             else {
-                msg.reply("Attends laisse moi " + Math.round((60000 - (now - last_command_exec.getTime())) / 1000) + " secondes");
+                msg.reply("Attends laisse moi " + Math.round((5000 - (now - last_command_exec.getTime())) / 1000) + " secondes");
             }
         }
     });
