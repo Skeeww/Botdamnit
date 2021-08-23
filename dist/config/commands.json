@@ -142,5 +142,13 @@
         "usage": "Vérifie si tu as tricher ou non",
         "param": ["<message>"],
         "rank": []
+    },
+    {
+        "name": "Uwutify",
+        "command": "uwu",
+        "aliases": ["owo", "furry", "uwutify"],
+        "usage": "UwU would bwe my fursowo ? :3",
+        "param": ["<message>"],
+        "rank": []
     }
 ]
