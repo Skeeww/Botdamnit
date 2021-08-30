@@ -150,5 +150,13 @@
         "usage": "UwU would bwe my fursowo ? :3",
         "param": ["<message>"],
         "rank": []
+    },
+    {
+        "name": "Drake",
+        "command": "drake",
+        "aliases": ["papoodrake"],
+        "usage": "Augmenter votre taux de drip avec cette commande",
+        "param": ["<text_up>", "<text_down>"],
+        "rank": []
     }
 ]
