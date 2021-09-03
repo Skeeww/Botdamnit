@@ -22,7 +22,7 @@ client.on("ready", async () => {
 })
 
 client.on("message", async (msg) => {
-    if (msg.author.bot){ return }
+    if (msg.author.bot) return
     if (msg.channel.type === "dm") {
         DirectMessage.handle(msg)
     } else if (isCommand(msg.content)) {
