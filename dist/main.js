@@ -63,9 +63,8 @@ client.on("ready", function () { return __awaiter(void 0, void 0, void 0, functi
 }); });
 client.on("message", function (msg) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        if (msg.author.bot) {
+        if (msg.author.bot)
             return [2 /*return*/];
-        }
         if (msg.channel.type === "dm") {
             directMessage_1.DirectMessage.handle(msg);
         }
