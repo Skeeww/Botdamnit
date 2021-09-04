@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = void 0;
-var main_1 = require("../main");
+var config_1 = require("../utils/config");
 function run(cmd) {
     if (cmd.args.length >= 2) {
         var type = cmd.args.shift();
@@ -25,7 +25,7 @@ function run(cmd) {
         }
     }
     else {
-        cmd.msg.channel.send("La commande doit \u00EAtre sous la forme `" + main_1.config.PREFIX + cmd.command + "(ou " + cmd.command + ") <type> <valeur>`");
+        cmd.msg.channel.send("La commande doit \u00EAtre sous la forme `" + config_1.Config.get_instance().PREFIX + cmd.command + "(ou " + cmd.command + ") <type> <valeur>`");
     }
 }
 exports.run = run;

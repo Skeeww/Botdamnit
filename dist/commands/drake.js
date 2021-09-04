@@ -31,7 +31,7 @@ function run(cmd) {
                         cmd.msg.channel.send("Fuck une erreur est survenu ! *send uwu in the chat*\n```" + err + "```");
                         return;
                     }
-                    cmd.msg.channel.send(new discord_js_1.MessageAttachment(v, 'drake_papoo.png'));
+                    cmd.msg.channel.send({ files: [new discord_js_1.MessageAttachment(v, 'drake_papoo.png')] });
                 });
             });
         }).catch(function (err) {

@@ -25,7 +25,7 @@ export function run(cmd: HandledCommand) {
                             cmd.msg.channel.send("Fuck une erreur est survenu ! *send uwu in the chat*\n```" + err + "```")
                             return
                         }
-                        cmd.msg.channel.send(new MessageAttachment(v, 'renaud.png'))
+                        cmd.msg.channel.send({ files: [new MessageAttachment(v, 'renaud.png')] })
                     })
                 })
             })

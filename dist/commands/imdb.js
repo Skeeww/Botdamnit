@@ -6,14 +6,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = void 0;
 var axios_1 = __importDefault(require("axios"));
 var discord_js_1 = require("discord.js");
-var main_1 = require("../main");
+var config_1 = require("../utils/config");
 function run(cmd) {
     if (cmd.args.length > 0) {
         var query_1 = cmd.args.join(", ").replace(", ", " ");
-        axios_1.default.get("https://imdb-api.com/en/API/Search/" + main_1.config.IMDB_API_KEY + "/" + query_1).then(function (res) {
+        axios_1.default.get("https://imdb-api.com/en/API/Search/" + config_1.Config.get_instance().IMDB_API_KEY + "/" + query_1).then(function (res) {
             console.log(query_1);
             if (res.data.results.length > 0) {
-                axios_1.default.get("https://imdb-api.com/en/API/Title/" + main_1.config.IMDB_API_KEY + "/" + res.data.results[0].id).then(function (res) {
+                axios_1.default.get("https://imdb-api.com/en/API/Title/" + config_1.Config.get_instance().IMDB_API_KEY + "/" + res.data.results[0].id).then(function (res) {
                     var movie = res.data;
                     var embed = new discord_js_1.MessageEmbed({
                         title: movie.title || 'Titre introuvable',
@@ -58,7 +58,7 @@ function run(cmd) {
                             }
                         ]
                     });
-                    cmd.msg.channel.send(embed);
+                    cmd.msg.channel.send({ embeds: [embed] });
                 }).catch(function (err) {
                     cmd.msg.channel.send("Erreur: `" + err + "`");
                 });

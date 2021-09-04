@@ -1,4 +1,4 @@
-import { Client } from "discord.js"
+import { Client, Intents } from "discord.js"
 import { isCommand } from "./middlewares/checkCommands"
 import { checkPerm } from "./middlewares/guard"
 import { Presence } from "./modules/presence"
@@ -12,8 +12,16 @@ import { DirectMessage } from "./utils/directMessage"
 
 process.env.TZ = 'Europe/Paris'
 
-const config: Config = new Config()
-const client: Client = new Client()
+const config: Config = Config.get_instance()
+const client: Client = new Client({
+    intents: [
+        Intents.FLAGS.GUILDS,
+        Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+        Intents.FLAGS.GUILD_MESSAGE_TYPING,
+        Intents.FLAGS.GUILD_MEMBERS
+    ]
+})
 
 client.on("ready", async () => {
     require("./events/index")
@@ -21,9 +29,9 @@ client.on("ready", async () => {
     Debug.bot("Bot ready")
 })
 
-client.on("message", async (msg) => {
+client.on("messageCreate", msg => {
     if (msg.author.bot) return
-    if (msg.channel.type === "dm") {
+    if (msg.channel.type === "DM") {
         DirectMessage.handle(msg)
     } else if (isCommand(msg.content)) {
         (checkPerm(msg.member!, new Command(Command.extractCommand(msg.content)))) ? new HandledCommand(msg) : msg.channel.send(config.PERMISSION_DENIED_MSG)
@@ -36,4 +44,4 @@ client.login(config.TOKEN).then(() => {
     Debug.discord(r)
 })
 
-export { client, config }
+export { client }

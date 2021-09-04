@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.config = exports.client = void 0;
+exports.client = void 0;
 var discord_js_1 = require("discord.js");
 var checkCommands_1 = require("./middlewares/checkCommands");
 var guard_1 = require("./middlewares/guard");
@@ -49,9 +49,16 @@ var config_1 = require("./utils/config");
 var debug_1 = require("./utils/debug");
 var directMessage_1 = require("./utils/directMessage");
 process.env.TZ = 'Europe/Paris';
-var config = new config_1.Config();
-exports.config = config;
-var client = new discord_js_1.Client();
+var config = config_1.Config.get_instance();
+var client = new discord_js_1.Client({
+    intents: [
+        discord_js_1.Intents.FLAGS.GUILDS,
+        discord_js_1.Intents.FLAGS.GUILD_MESSAGES,
+        discord_js_1.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+        discord_js_1.Intents.FLAGS.GUILD_MESSAGE_TYPING,
+        discord_js_1.Intents.FLAGS.GUILD_MEMBERS
+    ]
+});
 exports.client = client;
 client.on("ready", function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
@@ -61,19 +68,16 @@ client.on("ready", function () { return __awaiter(void 0, void 0, void 0, functi
         return [2 /*return*/];
     });
 }); });
-client.on("message", function (msg) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        if (msg.author.bot)
-            return [2 /*return*/];
-        if (msg.channel.type === "dm") {
-            directMessage_1.DirectMessage.handle(msg);
-        }
-        else if (checkCommands_1.isCommand(msg.content)) {
-            (guard_1.checkPerm(msg.member, new command_1.Command(command_1.Command.extractCommand(msg.content)))) ? new commandHandler_1.HandledCommand(msg) : msg.channel.send(config.PERMISSION_DENIED_MSG);
-        }
-        return [2 /*return*/];
-    });
-}); });
+client.on("messageCreate", function (msg) {
+    if (msg.author.bot)
+        return;
+    if (msg.channel.type === "DM") {
+        directMessage_1.DirectMessage.handle(msg);
+    }
+    else if (checkCommands_1.isCommand(msg.content)) {
+        (guard_1.checkPerm(msg.member, new command_1.Command(command_1.Command.extractCommand(msg.content)))) ? new commandHandler_1.HandledCommand(msg) : msg.channel.send(config.PERMISSION_DENIED_MSG);
+    }
+});
 client.login(config.TOKEN).then(function () {
     debug_1.Debug.discord('Connection established');
 }).catch(function (r) {

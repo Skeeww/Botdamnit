@@ -1,6 +1,7 @@
 import { MessageEmbed, TextChannel } from "discord.js";
-import { client, config } from "../main";
+import { client } from "../main";
 import { HandledCommand } from "../utils/commandHandler";
+import { Config } from "../utils/config";
 
 const emotesReact = ["0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"]
 
@@ -23,13 +24,13 @@ class Poll implements IPoll {
     }
 
     send() {
-        client.guilds.fetch(config.GUILD_ID).then(guild => {
+        client.guilds.fetch(Config.get_instance().GUILD_ID).then(guild => {
             const embed = new MessageEmbed();
             this.answers.forEach((v, k) => {
                 embed.addField(k, v, true);
             });
             embed.setTitle(this.question);
-            (guild.channels.cache.find(c => c.id === config.CHANNELS.POLLS) as TextChannel).send(embed).then((m) => {
+            (guild.channels.cache.find(c => c.id === Config.get_instance().CHANNELS.POLLS) as TextChannel).send({ embeds: [embed] }).then((m) => {
                 this.answers.forEach((v) => {
                     m.react(v)
                 })

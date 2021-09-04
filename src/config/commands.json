@@ -80,14 +80,6 @@
         "rank": []
     },
     {
-        "name": "Animal",
-        "command": "animal",
-        "aliases": ["cat", "dog"],
-        "usage": "Random photo d'animaux",
-        "param": ["[ animal ]"],
-        "rank": ["790295244033228840"]
-    },
-    {
         "name": "IMDB",
         "command": "imdb",
         "aliases": ["film", "serie"],

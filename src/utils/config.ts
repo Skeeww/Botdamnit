@@ -1,6 +1,8 @@
 import dotEnv, { DotenvParseOutput } from "dotenv";
 
 class Config {
+    public static instance: Config;
+
     TOKEN: string
     PREFIX: string
     PERMISSION_DENIED_MSG: string
@@ -19,7 +21,7 @@ class Config {
     private RANKS: {}
 
 
-    constructor() {
+    private constructor() {
         const EnvConfig: DotenvParseOutput = dotEnv.config().parsed as DotenvParseOutput;
 
         this.TOKEN = EnvConfig.BOT_TOKEN
@@ -38,6 +40,13 @@ class Config {
         }
         this.RANKS = {}
         this.IMDB_API_KEY = EnvConfig.IMDB_API_KEY
+    }
+
+    public static get_instance(): Config {
+        if(!Config.instance){
+            Config.instance = new this()
+        }
+        return Config.instance
     }
 }
 

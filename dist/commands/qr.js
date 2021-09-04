@@ -22,7 +22,7 @@ function run(cmd) {
                 cmd.msg.channel.send("Erreur: `" + err + "`");
                 return;
             }
-            cmd.msg.channel.send(new discord_js_1.MessageAttachment(data));
+            cmd.msg.channel.send({ files: [new discord_js_1.MessageAttachment(data)] });
         });
     }).catch(function (err) {
         cmd.msg.channel.send("Erreur: `" + err + "`");

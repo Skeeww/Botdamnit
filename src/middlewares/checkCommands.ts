@@ -1,13 +1,13 @@
-import { config } from "../main";
-import { Command } from "../utils/command";
+import { Command } from "../utils/command"
+import { Config } from "../utils/config"
 
 function isCommand(command: string): boolean {
 
     let res: boolean = false
 
-    if (command.startsWith(config.PREFIX)) {
+    if (command.startsWith(Config.get_instance().PREFIX)) {
 
-        command = command.split(" ")[0].replace(config.PREFIX, '')
+        command = command.split(" ")[0].replace(Config.get_instance().PREFIX, '')
 
         let i = 0
 

@@ -1,6 +1,6 @@
 import { Message, User } from 'discord.js';
-import { config } from '../main';
 import { Command } from './command';
+import { Config } from './config';
 import { Debug } from './debug';
 
 interface IHandledCommand {
@@ -16,7 +16,7 @@ class HandledCommand extends Command implements IHandledCommand {
 
     constructor(msg: Message) {
         const splittedMessage = msg.content.split(" ")
-        super(splittedMessage[0].replace(config.PREFIX, ''))
+        super(splittedMessage[0].replace(Config.get_instance().PREFIX, ''))
         this.author = msg.author
         this.msg = msg
         splittedMessage.length > 1 ? this.args = splittedMessage.slice(1) : this.args = []

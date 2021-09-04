@@ -1,5 +1,5 @@
-import { config } from "../main";
 import { HandledCommand } from "../utils/commandHandler";
+import { Config } from "../utils/config";
 
 export function run(cmd: HandledCommand) {
     if (cmd.args.length >= 2) {
@@ -23,6 +23,6 @@ export function run(cmd: HandledCommand) {
                 break;
         }
     } else {
-        cmd.msg.channel.send(`La commande doit être sous la forme \`${config.PREFIX}${cmd.command}(ou ${cmd.command}) <type> <valeur>\``)
+        cmd.msg.channel.send(`La commande doit être sous la forme \`${Config.get_instance().PREFIX}${cmd.command}(ou ${cmd.command}) <type> <valeur>\``)
     }
 }

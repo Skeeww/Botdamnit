@@ -1,5 +1,6 @@
-import { client, config } from "../main";
+import { client } from "../main";
 import { HandledCommand } from "../utils/commandHandler";
+import { Config } from "../utils/config";
 
 export function run(cmd: HandledCommand) {
     let content: string = cmd.msg.member?.displayName || "unknown"
@@ -19,7 +20,7 @@ export function run(cmd: HandledCommand) {
 
 　　ﾟ　　 ${content} was ${Math.floor(Math.random() * 2) ? 'not' : ''} An Impostor.　 。　.
 
-　　'　　　 ${Math.floor(Math.random() * ((client.guilds.cache.find(g => g.id === config.GUILD_ID)?.memberCount || 5) + 1) + 2)} Impostors remains 　 　　。
+　　'　　　 ${Math.floor(Math.random() * ((client.guilds.cache.find(g => g.id === Config.get_instance().GUILD_ID)?.memberCount || 5) + 1) + 2)} Impostors remains 　 　　。
 
 　　ﾟ　　　.　　　. ,　　　　.　 .
         \`\`\`

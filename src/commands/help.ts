@@ -1,38 +1,41 @@
-import { MessageEmbed } from "discord.js";
-import { config } from "../main";
+import { GuildMember, MessageEmbed } from "discord.js";
 import { isCommand } from "../middlewares/checkCommands";
+import { checkPerm } from "../middlewares/guard";
 import { Command } from "../utils/command";
 import { HandledCommand } from "../utils/commandHandler";
+import { Config } from "../utils/config";
 
 function sendHelpOfCommand(command: Command): MessageEmbed {
     let embed: MessageEmbed = new MessageEmbed()
-    embed.setTitle(`====${command.name}====`)
+    embed.setTitle(`${command.name}`)
     embed.setDescription(`${command.usage}`)
     if (command.param.length) {
         embed.addField("Paramètres", `${command.param.join(" ")}`)
     }
-    embed.addField("Alias", `${command.aliases.join(", ")}`)
+    embed.addField("Alternatives", `${command.aliases.join(", ")}`)
     return embed
 }
 
-function sendHelp(): MessageEmbed {
+function sendHelp(member: GuildMember): MessageEmbed {
     let embed: MessageEmbed = new MessageEmbed()
-    embed.setTitle("====ASSITANCE MICROSOFT====")
-    embed.setDescription("Menu d'aide pour les différentes commandes")
+    embed.setTitle("Menu d'aide")
+    embed.setDescription("Pour avoir plus d'information sur une commande spécifique faites .help <command>")
     Command.getAllCommands().forEach(cmd => {
-        embed.addField(cmd.name, `${cmd.command}`, true)
+        if(checkPerm(member, cmd)){
+            embed.addField(cmd.name, `\`${Config.get_instance().PREFIX}${cmd.command}\` ${cmd.usage}`, false)
+        }
     })
     return embed
 }
 
-export function run(cmd: HandledCommand) {
+export async function run(cmd: HandledCommand) {
     if (cmd.args.length) {
-        if (isCommand(config.PREFIX + cmd.args[0])) {
-            cmd.msg.channel.send(sendHelpOfCommand(new Command(cmd.args[0])))
+        if (isCommand(Config.get_instance().PREFIX + cmd.args[0])) {
+            cmd.msg.channel.send({embeds: [sendHelpOfCommand(new Command(cmd.args[0]))]})
         } else {
             cmd.msg.channel.send(`La commande \`${cmd.args[0]}\` n'existe pas !`)
         }
     } else {
-        cmd.msg.channel.send(sendHelp())
+        (await cmd.author.createDM()).send({embeds: [sendHelp(cmd.msg.member!)]})
     }
 }
