@@ -1,4 +1,5 @@
-import { client, config } from "../main";
+import { client } from "../main";
+import { Config } from "../utils/config";
 import { Debug } from "../utils/debug";
 
 export namespace Reddit {
@@ -6,7 +7,7 @@ export namespace Reddit {
 
     client.on("messageReactionAdd", (react) => {
         if (react.emoji.name === "upvote" && (react.count || 0) >= 20) {
-            react.message.pin({ reason: "upvoted" }).catch((err) => {
+            react.message.pin().catch((err) => {
                 Debug.bot(err)
             })
             Debug.bot("trigger")
@@ -18,7 +19,7 @@ export namespace Reddit {
         }
     })
     client.on("message", (msg) => {
-        if (msg.content.startsWith("REDDIT") || msg.channel.id === config.CHANNELS.MEME) {
+        if (msg.content.startsWith("REDDIT") || msg.channel.id === Config.get_instance().CHANNELS.MEME) {
             msg.react(msg.guild?.emojis.cache.find(e => e.name === "upvote") || "").catch((err) => {
                 Debug.bot(err)
             })

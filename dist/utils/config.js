@@ -25,6 +25,12 @@ var Config = /** @class */ (function () {
         this.RANKS = {};
         this.IMDB_API_KEY = EnvConfig.IMDB_API_KEY;
     }
+    Config.get_instance = function () {
+        if (!Config.instance) {
+            Config.instance = new this();
+        }
+        return Config.instance;
+    };
     return Config;
 }());
 exports.Config = Config;

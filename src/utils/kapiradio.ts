@@ -1,5 +1,6 @@
 import { VoiceChannel } from "discord.js"
-import { client, config } from "../main"
+import { client } from "../main"
+import { Config } from "./config"
 
 const listMusics = [
     `./dist/assets/music/Beathoven.mp3.mpeg`,
@@ -12,7 +13,8 @@ namespace KapiRadio {
     let currentIndex = Math.floor(Math.random()*listMusics.length)
 
     export const run = () => {
-        const kapiChannel: VoiceChannel = client.guilds.resolve(config.GUILD_ID)?.channels.resolve(config.CHANNELS.KAPI_RADIO) as VoiceChannel
+        const kapiChannel: VoiceChannel = client.guilds.resolve(Config.get_instance().GUILD_ID)?.channels.resolve(Config.get_instance().CHANNELS.KAPI_RADIO) as VoiceChannel
+        /*
         kapiChannel.join().then(connection => {
             const player = connection.play(listMusics[currentIndex])
             player.on('finish', () => {
@@ -20,6 +22,7 @@ namespace KapiRadio {
                 connection.play(listMusics[currentIndex])
             })
         })
+        */
     }
 }
 

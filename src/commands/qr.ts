@@ -18,7 +18,7 @@ export function run(cmd: HandledCommand) {
                 cmd.msg.channel.send(`Erreur: \`${err}\``)
                 return
             }
-            cmd.msg.channel.send(new MessageAttachment(data))
+            cmd.msg.channel.send({ files: [new MessageAttachment(data)] })
         })
     }).catch(err => {
         cmd.msg.channel.send(`Erreur: \`${err}\``)

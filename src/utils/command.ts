@@ -1,6 +1,6 @@
 
 import commandsFile from "../config/commands.json"
-import { config } from "../main"
+import { Config } from "./config"
 interface ICommand {
     name: string
     command: string
@@ -41,7 +41,7 @@ class Command implements ICommand {
     }
 
     public static extractCommand(content: string) {
-        return content.split(" ")[0].replace(config.PREFIX, '')
+        return content.split(" ")[0].replace(Config.get_instance().PREFIX, '')
     }
 }
 

@@ -13,19 +13,20 @@ function run(cmd) {
     }
     var ip = cmd.args[0];
     minecraft_server_util_1.default.status(ip.split(":")[0], { port: parseInt(ip.split(":")[1]) || 25565 }).then(function (res) {
+        var _a;
         var embed = new discord_js_1.MessageEmbed();
         embed.setTitle(res.host + ":" + res.port);
-        embed.setDescription(res.description);
+        embed.setDescription(((_a = res.description) === null || _a === void 0 ? void 0 : _a.descriptionText) || "Aucune description");
         embed.addField("Nombre de joueurs:", res.onlinePlayers + "/" + res.maxPlayers, true);
-        embed.addField("Version:", res.version, true);
+        embed.addField("Version:", res.version || "Version inconnue", true);
         embed.setColor(0x00ff00);
-        cmd.msg.channel.send(embed);
+        cmd.msg.channel.send({ embeds: [embed] });
     }).catch(function () {
         var embed = new discord_js_1.MessageEmbed();
         embed.setTitle(ip.split(":")[0] + ":" + (ip.split(":")[1] || 25565));
         embed.setDescription("Serveur inaccessible");
         embed.setColor(0xff0000);
-        cmd.msg.channel.send(embed);
+        cmd.msg.channel.send({ embeds: [embed] });
     });
 }
 exports.run = run;

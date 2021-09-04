@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Suite = void 0;
 var main_1 = require("../main");
+var config_1 = require("../utils/config");
 var debug_1 = require("../utils/debug");
 var Suite;
 (function (Suite) {
@@ -9,7 +10,7 @@ var Suite;
     var n = 0;
     main_1.client.on('message', function (msg) {
         var _a, _b;
-        if (msg.author.bot || msg.channel.id != main_1.config.CHANNELS.RECURENCE) {
+        if (msg.author.bot || msg.channel.id != config_1.Config.get_instance().CHANNELS.RECURENCE) {
             return;
         }
         var input_number = parseInt(msg.content);
@@ -19,7 +20,7 @@ var Suite;
         }
         else {
             if (n >= 100) {
-                (_b = (_a = main_1.client.guilds.resolve(main_1.config.GUILD_ID)) === null || _a === void 0 ? void 0 : _a.members.resolve(msg.author.id)) === null || _b === void 0 ? void 0 : _b.kick("Image ne pas savoir compter");
+                (_b = (_a = main_1.client.guilds.resolve(config_1.Config.get_instance().GUILD_ID)) === null || _a === void 0 ? void 0 : _a.members.resolve(msg.author.id)) === null || _b === void 0 ? void 0 : _b.kick("Image ne pas savoir compter");
                 msg.channel.send("Salut " + msg.author.username + " !");
             }
             msg.react('❌');

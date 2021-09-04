@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Command = void 0;
 var commands_json_1 = __importDefault(require("../config/commands.json"));
-var main_1 = require("../main");
+var config_1 = require("./config");
 var Command = /** @class */ (function () {
     function Command(cmd) {
         this.name = "";
@@ -35,7 +35,7 @@ var Command = /** @class */ (function () {
         return commands_json_1.default;
     };
     Command.extractCommand = function (content) {
-        return content.split(" ")[0].replace(main_1.config.PREFIX, '');
+        return content.split(" ")[0].replace(config_1.Config.get_instance().PREFIX, '');
     };
     return Command;
 }());

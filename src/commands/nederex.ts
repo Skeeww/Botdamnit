@@ -12,5 +12,5 @@ export function run(cmd: HandledCommand) {
     }else{
         cmd.msg.channel.send(`${content}, mais avant, je lance la procédure prévue en cas de triche !`)
     }
-    cmd.msg.channel.send(new MessageAttachment(readFileSync("./src/assets/NEDEREX.png")))
+    cmd.msg.channel.send({ files: [new MessageAttachment(readFileSync("./src/assets/NEDEREX.png"))] })
 }
