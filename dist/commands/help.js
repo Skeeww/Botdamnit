@@ -44,6 +44,7 @@ var command_1 = require("../utils/command");
 var config_1 = require("../utils/config");
 function sendHelpOfCommand(command) {
     var embed = new discord_js_1.MessageEmbed();
+    embed.setColor("#FF22AA");
     embed.setTitle("" + command.name);
     embed.setDescription("" + command.usage);
     if (command.param.length) {
@@ -54,6 +55,7 @@ function sendHelpOfCommand(command) {
 }
 function sendHelp(member) {
     var embed = new discord_js_1.MessageEmbed();
+    embed.setColor("#FF22AA");
     embed.setTitle("Menu d'aide");
     embed.setDescription("Pour avoir plus d'information sur une commande spécifique faites .help <command>");
     command_1.Command.getAllCommands().forEach(function (cmd) {
