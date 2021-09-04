@@ -7,6 +7,7 @@ import { Config } from "../utils/config";
 
 function sendHelpOfCommand(command: Command): MessageEmbed {
     let embed: MessageEmbed = new MessageEmbed()
+    embed.setColor("#FF22AA")
     embed.setTitle(`${command.name}`)
     embed.setDescription(`${command.usage}`)
     if (command.param.length) {
@@ -18,6 +19,7 @@ function sendHelpOfCommand(command: Command): MessageEmbed {
 
 function sendHelp(member: GuildMember): MessageEmbed {
     let embed: MessageEmbed = new MessageEmbed()
+    embed.setColor("#FF22AA")
     embed.setTitle("Menu d'aide")
     embed.setDescription("Pour avoir plus d'information sur une commande spécifique faites .help <command>")
     Command.getAllCommands().forEach(cmd => {
