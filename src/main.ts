@@ -1,6 +1,7 @@
 import { Client, Intents } from "discord.js"
 import { isCommand } from "./middlewares/checkCommands"
 import { checkPerm } from "./middlewares/guard"
+import { Members } from "./modules/members"
 import { Presence } from "./modules/presence"
 import { Tick } from "./modules/tick"
 import { Twitch } from "./modules/twitch"
@@ -25,7 +26,8 @@ const client: Client = new Client({
 
 client.on("ready", async () => {
     require("./events/index")
-    new Tick(10000, [new Twitch, new Presence]).run()
+    new Tick(10 * 1000, [new Twitch, new Presence]).run()
+    new Tick(3600 * 1000, [new Members]).run()
     Debug.bot("Bot ready")
 })
 

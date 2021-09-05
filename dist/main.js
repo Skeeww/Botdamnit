@@ -40,6 +40,7 @@ exports.client = void 0;
 var discord_js_1 = require("discord.js");
 var checkCommands_1 = require("./middlewares/checkCommands");
 var guard_1 = require("./middlewares/guard");
+var members_1 = require("./modules/members");
 var presence_1 = require("./modules/presence");
 var tick_1 = require("./modules/tick");
 var twitch_1 = require("./modules/twitch");
@@ -63,7 +64,8 @@ exports.client = client;
 client.on("ready", function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         require("./events/index");
-        new tick_1.Tick(10000, [new twitch_1.Twitch, new presence_1.Presence]).run();
+        new tick_1.Tick(10 * 1000, [new twitch_1.Twitch, new presence_1.Presence]).run();
+        new tick_1.Tick(3600 * 1000, [new members_1.Members]).run();
         debug_1.Debug.bot("Bot ready");
         return [2 /*return*/];
     });
