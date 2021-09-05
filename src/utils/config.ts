@@ -9,6 +9,10 @@ class Config {
     GUILD_ID: string
     OPENAI_API: string
     IMDB_API_KEY: string
+    MONGODB: {
+        URL: string
+        COLLECTION: string
+    }
     CHANNELS: {
         ANNONCES: string
         SHARE: string
@@ -16,7 +20,8 @@ class Config {
         MEME: string
         ANO: string
         RECURENCE: string,
-        KAPI_RADIO: string
+        KAPI_RADIO: string,
+        SECTION_MEMBERS: string
     }
     private RANKS: {}
 
@@ -29,6 +34,10 @@ class Config {
         this.PERMISSION_DENIED_MSG = EnvConfig.PERMISSION_DENIED_MSG
         this.GUILD_ID = EnvConfig.GUILD_ID
         this.OPENAI_API = EnvConfig.OPENAI_API
+        this.MONGODB = {
+            URL: EnvConfig.MONGODB_URL,
+            COLLECTION: EnvConfig.MONGODB_COLLECTION
+        }
         this.CHANNELS = {
             ANNONCES: EnvConfig.ANNONCES,
             SHARE: EnvConfig.SHARE,
@@ -36,7 +45,8 @@ class Config {
             MEME: EnvConfig.MEME,
             ANO: EnvConfig.ANO,
             RECURENCE: EnvConfig.RECURENCE,
-            KAPI_RADIO: EnvConfig.KAPI_RADIO
+            KAPI_RADIO: EnvConfig.KAPI_RADIO,
+            SECTION_MEMBERS: EnvConfig.SECTION_MEMBERS
         }
         this.RANKS = {}
         this.IMDB_API_KEY = EnvConfig.IMDB_API_KEY
