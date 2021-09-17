@@ -57,7 +57,8 @@ var client = new discord_js_1.Client({
         discord_js_1.Intents.FLAGS.GUILD_MESSAGES,
         discord_js_1.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
         discord_js_1.Intents.FLAGS.GUILD_MESSAGE_TYPING,
-        discord_js_1.Intents.FLAGS.GUILD_MEMBERS
+        discord_js_1.Intents.FLAGS.GUILD_MEMBERS,
+        discord_js_1.Intents.FLAGS.GUILD_VOICE_STATES
     ]
 });
 exports.client = client;
@@ -76,8 +77,8 @@ client.on("messageCreate", function (msg) {
     if (msg.channel.type === "DM") {
         directMessage_1.DirectMessage.handle(msg);
     }
-    else if (checkCommands_1.isCommand(msg.content)) {
-        (guard_1.checkPerm(msg.member, new command_1.Command(command_1.Command.extractCommand(msg.content)))) ? new commandHandler_1.HandledCommand(msg) : msg.channel.send(config.PERMISSION_DENIED_MSG);
+    else if ((0, checkCommands_1.isCommand)(msg.content)) {
+        ((0, guard_1.checkPerm)(msg.member, new command_1.Command(command_1.Command.extractCommand(msg.content)))) ? new commandHandler_1.HandledCommand(msg) : msg.channel.send(config.PERMISSION_DENIED_MSG);
     }
 });
 client.login(config.TOKEN).then(function () {
