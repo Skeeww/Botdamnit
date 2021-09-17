@@ -152,11 +152,11 @@
         "rank": []
     },
     {
-        "name": "🚒 Le Feu",
-        "command": "feu",
-        "aliases": [],
-        "usage": "Attention mec le feu est dangereux",
-        "param": ["<message>"],
+        "name": "🎼 Music",
+        "command": "play",
+        "aliases": ["p"],
+        "usage": "Joue de la musique #RIPRYHTM",
+        "param": ["<url>"],
         "rank": []
     }
 ]
