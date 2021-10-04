@@ -7,8 +7,8 @@ exports.Debug = void 0;
 var debug_1 = __importDefault(require("debug"));
 var Debug;
 (function (Debug) {
-    var dDiscord = (0, debug_1.default)('Discord');
-    var dBot = (0, debug_1.default)('Bot');
+    var dDiscord = debug_1.default('Discord');
+    var dBot = debug_1.default('Bot');
     function discord(content) {
         dDiscord(content);
     }

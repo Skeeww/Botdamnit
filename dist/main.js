@@ -40,6 +40,7 @@ exports.client = void 0;
 var discord_js_1 = require("discord.js");
 var checkCommands_1 = require("./middlewares/checkCommands");
 var guard_1 = require("./middlewares/guard");
+var dns_1 = require("./modules/dns");
 var members_1 = require("./modules/members");
 var presence_1 = require("./modules/presence");
 var tick_1 = require("./modules/tick");
@@ -54,6 +55,7 @@ var config = config_1.Config.get_instance();
 var client = new discord_js_1.Client({
     intents: [
         discord_js_1.Intents.FLAGS.GUILDS,
+        discord_js_1.Intents.FLAGS.DIRECT_MESSAGES,
         discord_js_1.Intents.FLAGS.GUILD_MESSAGES,
         discord_js_1.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
         discord_js_1.Intents.FLAGS.GUILD_MESSAGE_TYPING,
@@ -65,20 +67,21 @@ exports.client = client;
 client.on("ready", function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         require("./events/index");
-        new tick_1.Tick(10 * 1000, [new twitch_1.Twitch, new presence_1.Presence]).run();
+        new tick_1.Tick(10 * 1000, [new twitch_1.Twitch, new presence_1.Presence, new dns_1.Dns]).run();
         new tick_1.Tick(3600 * 1000, [new members_1.Members]).run();
         debug_1.Debug.bot("Bot ready");
         return [2 /*return*/];
     });
 }); });
 client.on("messageCreate", function (msg) {
-    if (msg.author.bot)
+    if (msg.author.bot) {
         return;
+    }
     if (msg.channel.type === "DM") {
         directMessage_1.DirectMessage.handle(msg);
     }
-    else if ((0, checkCommands_1.isCommand)(msg.content)) {
-        ((0, guard_1.checkPerm)(msg.member, new command_1.Command(command_1.Command.extractCommand(msg.content)))) ? new commandHandler_1.HandledCommand(msg) : msg.channel.send(config.PERMISSION_DENIED_MSG);
+    else if (checkCommands_1.isCommand(msg.content)) {
+        (guard_1.checkPerm(msg.member, new command_1.Command(command_1.Command.extractCommand(msg.content)))) ? new commandHandler_1.HandledCommand(msg) : msg.channel.send(config.PERMISSION_DENIED_MSG);
     }
 });
 client.login(config.TOKEN).then(function () {
