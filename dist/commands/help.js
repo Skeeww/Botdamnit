@@ -59,7 +59,7 @@ function sendHelp(member) {
     embed.setTitle("Menu d'aide");
     embed.setDescription("Pour avoir plus d'information sur une commande spécifique faites .help <command>");
     command_1.Command.getAllCommands().forEach(function (cmd) {
-        if ((0, guard_1.checkPerm)(member, cmd)) {
+        if (guard_1.checkPerm(member, cmd)) {
             embed.addField(cmd.name, "`" + config_1.Config.get_instance().PREFIX + cmd.command + "` " + cmd.usage, false);
         }
     });
@@ -71,7 +71,7 @@ function run(cmd) {
             switch (_a.label) {
                 case 0:
                     if (!cmd.args.length) return [3 /*break*/, 1];
-                    if ((0, checkCommands_1.isCommand)(config_1.Config.get_instance().PREFIX + cmd.args[0])) {
+                    if (checkCommands_1.isCommand(config_1.Config.get_instance().PREFIX + cmd.args[0])) {
                         cmd.msg.channel.send({ embeds: [sendHelpOfCommand(new command_1.Command(cmd.args[0]))] });
                     }
                     else {

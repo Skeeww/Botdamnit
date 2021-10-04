@@ -54,7 +54,7 @@ export function run(cmd: HandledCommand) {
                         Debug.bot("Audio player is playing")
                         cmd.msg.channel.send("Okay let's go !")
                     })
-                    sub.player.on("error", (err) => {
+                    sub.player.on("error", (err: any) => {
                         Debug.bot("Player error occured")
                         Debug.bot(err)
                         sub.connection.destroy()

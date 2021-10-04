@@ -1,6 +1,7 @@
-import { Client, Intents } from "discord.js"
+import { Client, Intents, Message } from "discord.js"
 import { isCommand } from "./middlewares/checkCommands"
 import { checkPerm } from "./middlewares/guard"
+import { Dns } from "./modules/dns"
 import { Members } from "./modules/members"
 import { Presence } from "./modules/presence"
 import { Tick } from "./modules/tick"
@@ -17,6 +18,7 @@ const config: Config = Config.get_instance()
 const client: Client = new Client({
     intents: [
         Intents.FLAGS.GUILDS,
+        Intents.FLAGS.DIRECT_MESSAGES,
         Intents.FLAGS.GUILD_MESSAGES,
         Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
         Intents.FLAGS.GUILD_MESSAGE_TYPING,
@@ -27,13 +29,13 @@ const client: Client = new Client({
 
 client.on("ready", async () => {
     require("./events/index")
-    new Tick(10 * 1000, [new Twitch, new Presence]).run()
+    new Tick(10 * 1000, [new Twitch, new Presence, new Dns]).run()
     new Tick(3600 * 1000, [new Members]).run()
     Debug.bot("Bot ready")
 })
 
-client.on("messageCreate", msg => {
-    if (msg.author.bot) return
+client.on("messageCreate", (msg: Message) => {
+    if (msg.author.bot) { return }
     if (msg.channel.type === "DM") {
         DirectMessage.handle(msg)
     } else if (isCommand(msg.content)) {

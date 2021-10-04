@@ -16,7 +16,7 @@ var Presence = /** @class */ (function () {
                 var _a;
                 if (i < presence_json_1.default.length) {
                     (_a = main_1.client.user) === null || _a === void 0 ? void 0 : _a.setActivity({
-                        name: presence_json_1.default[i] === "!DATE" ? "il est " + (0, moment_1.default)().format("HH:mm") : presence_json_1.default[i],
+                        name: presence_json_1.default[i] === "!DATE" ? "il est " + moment_1.default().format("HH:mm") : presence_json_1.default[i],
                         type: "PLAYING"
                     });
                     i++;
