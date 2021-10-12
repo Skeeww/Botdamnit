@@ -19,7 +19,8 @@ class Tick {
 
     run(){
         this.modules.forEach((m) => {
-            m.exec(this.freq)
+            m.exec()
+            setInterval(() => m.exec(), this.freq)
         })
     }
 }

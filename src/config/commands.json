@@ -150,13 +150,5 @@
         "usage": "Augmenter votre taux de drip avec cette commande",
         "param": ["<text_up>", "<text_down>"],
         "rank": []
-    },
-    {
-        "name": "🎼 Music",
-        "command": "play",
-        "aliases": ["p"],
-        "usage": "Joue de la musique #RIPRYHTM",
-        "param": ["<url>"],
-        "rank": []
     }
 ]
