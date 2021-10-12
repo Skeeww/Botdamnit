@@ -13,7 +13,8 @@ var Tick = /** @class */ (function () {
     Tick.prototype.run = function () {
         var _this = this;
         this.modules.forEach(function (m) {
-            m.exec(_this.freq);
+            m.exec();
+            setInterval(function () { return m.exec(); }, _this.freq);
         });
     };
     return Tick;
