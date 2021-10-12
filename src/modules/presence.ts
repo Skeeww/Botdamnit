@@ -3,20 +3,18 @@ import { client } from "../main"
 import { IModule } from "./tick"
 import moment from "moment"
 class Presence implements IModule{
+    static i: number = 0
     name: string = "Presence"
-    exec: Function = (freq: number) => {
-        let i: number = 0
-        setInterval(() => {
-            if(i < presence.length){
-                client.user?.setActivity({
-                    name: presence[i] === "!DATE" ? `il est ${moment().format("HH:mm")}` : presence[i],
-                    type: "PLAYING"
-                })
-                i++
-            }else{
-                i = 0
-            }
-        }, freq)
+    exec: Function = () => {
+        if(Presence.i < presence.length){
+            client.user?.setActivity({
+                name: presence[Presence.i] === "!DATE" ? `il est ${moment().format("HH:mm")}` : presence[Presence.i],
+                type: "PLAYING"
+            })
+            Presence.i++
+        }else{
+            Presence.i = 0
+        }
     }
 }
 

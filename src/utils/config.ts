@@ -21,7 +21,8 @@ class Config {
         ANO: string
         RECURENCE: string,
         KAPI_RADIO: string,
-        SECTION_MEMBERS: string
+        SECTION_MEMBERS: string,
+        LIGMA: string
     }
     private RANKS: {}
 
@@ -46,7 +47,8 @@ class Config {
             ANO: EnvConfig.ANO,
             RECURENCE: EnvConfig.RECURENCE,
             KAPI_RADIO: EnvConfig.KAPI_RADIO,
-            SECTION_MEMBERS: EnvConfig.SECTION_MEMBERS
+            SECTION_MEMBERS: EnvConfig.SECTION_MEMBERS,
+            LIGMA: EnvConfig.LIGMA
         }
         this.RANKS = {}
         this.IMDB_API_KEY = EnvConfig.IMDB_API_KEY

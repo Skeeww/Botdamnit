@@ -1,7 +1,7 @@
 import { Client, Intents, Message } from "discord.js"
 import { isCommand } from "./middlewares/checkCommands"
 import { checkPerm } from "./middlewares/guard"
-import { Dns } from "./modules/dns"
+import { Ligma } from "./modules/ligma"
 import { Members } from "./modules/members"
 import { Presence } from "./modules/presence"
 import { Tick } from "./modules/tick"
@@ -27,10 +27,11 @@ const client: Client = new Client({
     ]
 })
 
-client.on("ready", async () => {
+client.on("ready", () => {
     require("./events/index")
-    new Tick(10 * 1000, [new Twitch, new Presence, new Dns]).run()
+    new Tick(10 * 1000, [new Twitch, new Presence]).run()
     new Tick(3600 * 1000, [new Members]).run()
+    new Tick(86400 * 1000, [new Ligma]).run()
     Debug.bot("Bot ready")
 })
 
