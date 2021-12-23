@@ -48,6 +48,13 @@ var RandomAnswer;
         "tron",
         "ffeur",
     ];
+    var ner_words = [
+        "gros",
+        "**gros**",
+        "||gros||",
+        "???",
+        "t'es sérieux gros ?"
+    ];
     main_1.client.on("messageCreate", function (msg) { return __awaiter(_this, void 0, void 0, function () {
         var odd, text;
         var _a, _b, _c;
@@ -66,10 +73,10 @@ var RandomAnswer;
                 msg.channel.send(msg.author.username + " en vrai ce que tu dis est interessant");
             }
             else if (text.endsWith("quoi")) {
-                msg.channel.send(quoi_words[Math.floor(quoi_words.length * Math.random())]);
+                msg.channel.send(quoi_words[Math.floor(quoi_words.length * odd)]);
             }
             else if (text.endsWith("ner") || text.endsWith("nez") || text.endsWith("né") || text.endsWith("née")) {
-                msg.channel.send("gros");
+                msg.channel.send(ner_words[Math.floor(ner_words.length * odd)]);
             }
             return [2 /*return*/];
         });
