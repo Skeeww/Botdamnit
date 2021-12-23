@@ -20,9 +20,9 @@ export namespace RandomAnswer {
             msg.channel.send(`${msg.author.username} tu viens vraiment de dire ça sur ${msg.guild?.members.cache.random()?.displayName} !!!!`)
         }else if(odd < 0.008){
             msg.channel.send(`${msg.author.username} en vrai ce que tu dis est interessant`)
-        }else if(odd < 0.1 && text.endsWith("quoi")) {
+        }else if(text.endsWith("quoi")) {
             msg.channel.send(quoi_words[Math.floor(quoi_words.length * Math.random())])
-        } else if(odd < 0.1 && text.endsWith("ner") || text.endsWith("nez") || text.endsWith("né") || text.endsWith("née")) {
+        } else if(text.endsWith("ner") || text.endsWith("nez") || text.endsWith("né") || text.endsWith("née")) {
             msg.channel.send("gros")
         }
     })
