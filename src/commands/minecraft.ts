@@ -8,17 +8,18 @@ export function run(cmd: HandledCommand) {
         return
     }
     const ip: string = cmd.args[0]
-    mc.status(ip.split(":")[0], { port: parseInt(ip.split(":")[1]) || 25565 }).then((res) => {
+    const port: number = parseInt(ip.split(":")[1]) || 25565
+    mc.status(ip.split(":")[0], port).then((res) => {
         let embed: MessageEmbed = new MessageEmbed()
-        embed.setTitle(`${res.host}:${res.port}`)
-        embed.setDescription(res.description?.descriptionText || "Aucune description")
-        embed.addField("Nombre de joueurs:", `${res.onlinePlayers}/${res.maxPlayers}`, true)
-        embed.addField("Version:", res.version || "Version inconnue", true)
+        embed.setTitle(`${ip}:${port}`)
+        embed.setDescription(res.motd.clean || "Aucune description")
+        embed.addField("Nombre de joueurs:", `${res.players.online}/${res.players.max}`, true)
+        embed.addField("Version:", res.version.name || "Version inconnue", true)
         embed.setColor(0x00ff00)
         cmd.msg.channel.send({ embeds: [embed] })
     }).catch(() => {
         let embed: MessageEmbed = new MessageEmbed()
-        embed.setTitle(`${ip.split(":")[0]}:${ip.split(":")[1] || 25565}`)
+        embed.setTitle(`${ip}:${port}`)
         embed.setDescription("Serveur inaccessible")
         embed.setColor(0xff0000)
         cmd.msg.channel.send({ embeds: [embed] })

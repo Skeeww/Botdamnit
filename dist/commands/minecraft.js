@@ -12,18 +12,18 @@ function run(cmd) {
         return;
     }
     var ip = cmd.args[0];
-    minecraft_server_util_1.default.status(ip.split(":")[0], { port: parseInt(ip.split(":")[1]) || 25565 }).then(function (res) {
-        var _a;
+    var port = parseInt(ip.split(":")[1]) || 25565;
+    minecraft_server_util_1.default.status(ip.split(":")[0], port).then(function (res) {
         var embed = new discord_js_1.MessageEmbed();
-        embed.setTitle(res.host + ":" + res.port);
-        embed.setDescription(((_a = res.description) === null || _a === void 0 ? void 0 : _a.descriptionText) || "Aucune description");
-        embed.addField("Nombre de joueurs:", res.onlinePlayers + "/" + res.maxPlayers, true);
-        embed.addField("Version:", res.version || "Version inconnue", true);
+        embed.setTitle(ip + ":" + port);
+        embed.setDescription(res.motd.clean || "Aucune description");
+        embed.addField("Nombre de joueurs:", res.players.online + "/" + res.players.max, true);
+        embed.addField("Version:", res.version.name || "Version inconnue", true);
         embed.setColor(0x00ff00);
         cmd.msg.channel.send({ embeds: [embed] });
     }).catch(function () {
         var embed = new discord_js_1.MessageEmbed();
-        embed.setTitle(ip.split(":")[0] + ":" + (ip.split(":")[1] || 25565));
+        embed.setTitle(ip + ":" + port);
         embed.setDescription("Serveur inaccessible");
         embed.setColor(0xff0000);
         cmd.msg.channel.send({ embeds: [embed] });

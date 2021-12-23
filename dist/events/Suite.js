@@ -8,7 +8,7 @@ var Suite;
 (function (Suite) {
     debug_1.Debug.bot("[Suite] event loaded");
     var n = 0;
-    main_1.client.on('message', function (msg) {
+    main_1.client.on('messageCreate', function (msg) {
         var _a, _b;
         if (msg.author.bot || msg.channel.id != config_1.Config.get_instance().CHANNELS.RECURENCE) {
             return;

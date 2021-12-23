@@ -20,7 +20,7 @@ var Reddit;
             });
         }
     });
-    main_1.client.on("message", function (msg) {
+    main_1.client.on("messageCreate", function (msg) {
         var _a, _b;
         if (msg.content.startsWith("REDDIT") || msg.channel.id === config_1.Config.get_instance().CHANNELS.MEME) {
             msg.react(((_a = msg.guild) === null || _a === void 0 ? void 0 : _a.emojis.cache.find(function (e) { return e.name === "upvote"; })) || "").catch(function (err) {
