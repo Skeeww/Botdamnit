@@ -7,10 +7,7 @@
   "author": "Noan <noan.perrot@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@discordjs/opus": "^0.6.0",
-    "@discordjs/voice": "^0.6.0",
     "@types/debug": "^4.1.5",
-    "@types/fluent-ffmpeg": "^2.1.16",
     "@types/node": "^16.7.10",
     "@types/qrcode": "^1.4.1",
     "axios": "^0.21.1",
@@ -18,16 +15,11 @@
     "debug": "^4.3.1",
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
-    "ffmpeg": "^0.0.4",
-    "ffmpeg-static": "^4.4.0",
-    "fluent-ffmpeg": "^2.1.2",
     "jimp": "^0.16.1",
-    "libsodium-wrappers": "^0.7.9",
     "minecraft-server-util": "^3.4.4",
     "moment": "^2.29.1",
     "mongodb": "^4.1.1",
     "qrcode": "^1.4.4",
-    "sodium": "^3.0.2",
     "utf-8-validate": "^5.0.4"
   },
   "scripts": {
