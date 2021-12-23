@@ -7,7 +7,7 @@ export namespace Suite {
 
     let n: number = 0
 
-    client.on('message', (msg) => {
+    client.on('messageCreate', (msg) => {
         if(msg.author.bot || msg.channel.id != Config.get_instance().CHANNELS.RECURENCE){ return }
         const input_number: number = parseInt(msg.content)
         if(input_number !== NaN && input_number === n + 1){

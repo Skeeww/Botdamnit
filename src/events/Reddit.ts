@@ -18,7 +18,7 @@ export namespace Reddit {
             })
         }
     })
-    client.on("message", (msg) => {
+    client.on("messageCreate", (msg) => {
         if (msg.content.startsWith("REDDIT") || msg.channel.id === Config.get_instance().CHANNELS.MEME) {
             msg.react(msg.guild?.emojis.cache.find(e => e.name === "upvote") || "").catch((err) => {
                 Debug.bot(err)

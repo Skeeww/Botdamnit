@@ -31,7 +31,6 @@ client.on("ready", () => {
     require("./events/index")
     new Tick(10 * 1000, [new Twitch, new Presence]).run()
     new Tick(3600 * 1000, [new Members]).run()
-    new Tick(86400 * 1000, [new Ligma]).run()
     Debug.bot("Bot ready")
 })
 
