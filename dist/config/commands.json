@@ -150,5 +150,13 @@
         "usage": "Augmenter votre taux de drip avec cette commande",
         "param": ["<text_up>", "<text_down>"],
         "rank": []
+    },
+    {
+        "name": "🎼 Play",
+        "command": "play",
+        "aliases": ["p"],
+        "usage": "Joue une vidéo depuis un lien Youtube",
+        "param": ["<url>"],
+        "rank": []
     }
 ]
