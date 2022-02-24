@@ -31,7 +31,7 @@ function run(cmd) {
         fs.readFile("./src/hidden/" + files[Math.floor(Math.random() * (files.length))], function (err, data) {
             if (err)
                 throw err;
-            cmd.msg.channel.send({ embeds: [new discord_js_1.MessageAttachment(data)] });
+            cmd.msg.channel.send({ attachments: [new discord_js_1.MessageAttachment(data)] });
         });
     });
 }
