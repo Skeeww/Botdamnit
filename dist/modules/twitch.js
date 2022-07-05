@@ -21,16 +21,16 @@ var Twitch = /** @class */ (function () {
                         if (a.type === "STREAMING" && !inStream.includes(m)) {
                             inStream.push(m);
                             var embed = new discord_js_1.MessageEmbed();
-                            embed.setTitle(m.displayName + " EST EN LIVE !");
-                            embed.setDescription("" + a.details);
+                            embed.setTitle("".concat(m.displayName, " EST EN LIVE !"));
+                            embed.setDescription("".concat(a.details));
                             embed.setThumbnail(((_a = a.assets) === null || _a === void 0 ? void 0 : _a.smallImageURL()) || '');
                             embed.setURL(a.url || '');
                             m.guild.channels.cache.find(function (c) { return c.id === config_1.Config.get_instance().CHANNELS.SHARE; }).send({ embeds: [embed] });
-                            debug_1.Debug.bot(m.user.username + " added to inStream");
+                            debug_1.Debug.bot("".concat(m.user.username, " added to inStream"));
                         }
                         if (a.type !== "STREAMING" && inStream.includes(m)) {
                             inStream.splice(inStream.indexOf(m), 1);
-                            debug_1.Debug.bot(m.user.username + " removed from inStream");
+                            debug_1.Debug.bot("".concat(m.user.username, " removed from inStream"));
                         }
                     }
                 }

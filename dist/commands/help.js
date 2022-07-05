@@ -45,12 +45,12 @@ var config_1 = require("../utils/config");
 function sendHelpOfCommand(command) {
     var embed = new discord_js_1.MessageEmbed();
     embed.setColor("#FF22AA");
-    embed.setTitle("" + command.name);
-    embed.setDescription("" + command.usage);
+    embed.setTitle("".concat(command.name));
+    embed.setDescription("".concat(command.usage));
     if (command.param.length) {
-        embed.addField("Paramètres", "" + command.param.join(" "));
+        embed.addField("Paramètres", "".concat(command.param.join(" ")));
     }
-    embed.addField("Alternatives", "" + command.aliases.join(", "));
+    embed.addField("Alternatives", "".concat(command.aliases.join(", ")));
     return embed;
 }
 function sendHelp(member) {
@@ -59,8 +59,8 @@ function sendHelp(member) {
     embed.setTitle("Menu d'aide");
     embed.setDescription("Pour avoir plus d'information sur une commande spécifique faites .help <command>");
     command_1.Command.getAllCommands().forEach(function (cmd) {
-        if (guard_1.checkPerm(member, cmd)) {
-            embed.addField(cmd.name, "`" + config_1.Config.get_instance().PREFIX + cmd.command + "` " + cmd.usage, false);
+        if ((0, guard_1.checkPerm)(member, cmd)) {
+            embed.addField(cmd.name, "`".concat(config_1.Config.get_instance().PREFIX).concat(cmd.command, "` ").concat(cmd.usage), false);
         }
     });
     return embed;
@@ -71,11 +71,11 @@ function run(cmd) {
             switch (_a.label) {
                 case 0:
                     if (!cmd.args.length) return [3 /*break*/, 1];
-                    if (checkCommands_1.isCommand(config_1.Config.get_instance().PREFIX + cmd.args[0])) {
+                    if ((0, checkCommands_1.isCommand)(config_1.Config.get_instance().PREFIX + cmd.args[0])) {
                         cmd.msg.channel.send({ embeds: [sendHelpOfCommand(new command_1.Command(cmd.args[0]))] });
                     }
                     else {
-                        cmd.msg.channel.send("La commande `" + cmd.args[0] + "` n'existe pas !");
+                        cmd.msg.channel.send("La commande `".concat(cmd.args[0], "` n'existe pas !"));
                     }
                     return [3 /*break*/, 3];
                 case 1: return [4 /*yield*/, cmd.author.createDM()];

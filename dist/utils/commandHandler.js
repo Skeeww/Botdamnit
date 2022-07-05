@@ -14,8 +14,12 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HandledCommand = void 0;
+var path_1 = __importDefault(require("path"));
 var command_1 = require("./command");
 var config_1 = require("./config");
 var debug_1 = require("./debug");
@@ -28,8 +32,13 @@ var HandledCommand = /** @class */ (function (_super) {
         _this.author = msg.author;
         _this.msg = msg;
         splittedMessage.length > 1 ? _this.args = splittedMessage.slice(1) : _this.args = [];
-        debug_1.Debug.bot(_this.author.username + "#" + _this.author.discriminator + " execute " + _this.name + " with args " + _this.args);
-        require("../commands/" + _this.command).run(_this);
+        debug_1.Debug.bot("".concat(_this.author.username, "#").concat(_this.author.discriminator, " execute ").concat(_this.name, " with args ").concat(_this.args));
+        try {
+            require(path_1.default.join(__dirname, "../commands/", _this.command)).run(_this);
+        }
+        catch (_a) {
+            debug_1.Debug.bot("Commande \"".concat(_this.command, "\" non trouv\u00E9e"));
+        }
         return _this;
     }
     return HandledCommand;

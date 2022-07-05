@@ -15,15 +15,15 @@ function run(cmd) {
     var port = parseInt(ip.split(":")[1]) || 25565;
     minecraft_server_util_1.default.status(ip.split(":")[0], port).then(function (res) {
         var embed = new discord_js_1.MessageEmbed();
-        embed.setTitle(ip + ":" + port);
+        embed.setTitle("".concat(ip, ":").concat(port));
         embed.setDescription(res.motd.clean || "Aucune description");
-        embed.addField("Nombre de joueurs:", res.players.online + "/" + res.players.max, true);
+        embed.addField("Nombre de joueurs:", "".concat(res.players.online, "/").concat(res.players.max), true);
         embed.addField("Version:", res.version.name || "Version inconnue", true);
         embed.setColor(0x00ff00);
         cmd.msg.channel.send({ embeds: [embed] });
     }).catch(function () {
         var embed = new discord_js_1.MessageEmbed();
-        embed.setTitle(ip + ":" + port);
+        embed.setTitle("".concat(ip, ":").concat(port));
         embed.setDescription("Serveur inaccessible");
         embed.setColor(0xff0000);
         cmd.msg.channel.send({ embeds: [embed] });

@@ -4,9 +4,9 @@ exports.run = void 0;
 function run(cmd) {
     if (cmd.args.length == 1) {
         cmd.msg.channel.messages.fetch(cmd.args[0], { cache: true }).then(function (m) {
-            cmd.msg.channel.send("Le message de " + m.author.username + " est maintenant dans le cache");
+            cmd.msg.channel.send("Le message de ".concat(m.author.username, " est maintenant dans le cache"));
         }).catch(function (err) {
-            cmd.msg.channel.send(" ``` " + err + " ``` ");
+            cmd.msg.channel.send(" ``` ".concat(err, " ``` "));
         });
     }
     else {

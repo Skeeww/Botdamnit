@@ -9,7 +9,7 @@ function run(cmd) {
     cmd.msg.channel.setRateLimitPerUser(time, "bot").then(function () {
         cmd.msg.channel.send("https://media1.tenor.com/images/8dc4387d86af21d417809358fa982f22/tenor.gif");
     }).catch(function (err) {
-        cmd.msg.channel.send("Oh fuck une erreur: #sendUwUinthechat `" + err + "` ");
+        cmd.msg.channel.send("Oh fuck une erreur: #sendUwUinthechat `".concat(err, "` "));
     });
 }
 exports.run = run;

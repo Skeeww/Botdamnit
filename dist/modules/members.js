@@ -14,7 +14,7 @@ var Members = /** @class */ (function () {
             var guild = main_1.client.guilds.cache.find(function (g) { return g.id === config_1.Config.get_instance().GUILD_ID; });
             var chan = guild.channels.resolve(config_1.Config.get_instance().CHANNELS.SECTION_MEMBERS);
             if (chan) {
-                chan.setName("#DEFINE NB_MEMBERS " + guild.memberCount);
+                chan.setName("#DEFINE NB_MEMBERS ".concat(guild.memberCount));
                 mongo_1.default.get_instance().updateMembers(guild);
             }
         };

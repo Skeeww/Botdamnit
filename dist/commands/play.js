@@ -12,12 +12,12 @@ function run(cmd) {
     var member = (_a = cmd.msg.guild) === null || _a === void 0 ? void 0 : _a.members.cache.find(function (m) { return m.id === cmd.author.id; });
     if (member.voice.channel !== undefined) {
         if (cmd.args[0] === "stop") {
-            (_b = voice_1.getVoiceConnection(cmd.msg.guildId)) === null || _b === void 0 ? void 0 : _b.destroy();
+            (_b = (0, voice_1.getVoiceConnection)(cmd.msg.guildId)) === null || _b === void 0 ? void 0 : _b.destroy();
             return;
         }
         var url_1 = cmd.args[0].replace(",", "").replace("\\", "").replace("\"", "");
         var allowed_1 = true;
-        child_process_1.exec("youtube-dl " + url_1 + " --audio-format mp3 --get-duration", function (err, stdout, stderr) {
+        (0, child_process_1.exec)("youtube-dl ".concat(url_1, " --audio-format mp3 --get-duration"), function (err, stdout, stderr) {
             if (parseInt(stdout.split(":")[0]) >= 6) {
                 cmd.msg.channel.send("Désolé mais la musique dure 6 minutes ou plus");
                 allowed_1 = false;
@@ -26,20 +26,20 @@ function run(cmd) {
                 debug_1.Debug.bot("URL: " + url_1);
                 debug_1.Debug.bot("Youtube-DL commands executing");
                 cmd.msg.react('✅');
-                child_process_1.exec("rm music.mp3");
-                child_process_1.exec("youtube-dl " + url_1 + " --audio-format mp3 -x -o music.mp3 --no-progress", function (err, stdout, stderr) {
+                (0, child_process_1.exec)("rm music.mp3");
+                (0, child_process_1.exec)("youtube-dl ".concat(url_1, " --audio-format mp3 -x -o music.mp3 --no-progress"), function (err, stdout, stderr) {
                     debug_1.Debug.bot(stdout);
                     if (!err && !stderr) {
                         debug_1.Debug.bot("Youtube-DL commands executed without error");
-                        var connection = voice_1.joinVoiceChannel({
+                        var connection = (0, voice_1.joinVoiceChannel)({
                             channelId: member.voice.channelId,
                             guildId: cmd.msg.guildId,
                             adapterCreator: member.guild.voiceAdapterCreator
                         });
                         debug_1.Debug.bot("Connection created");
-                        var audioRes = voice_1.createAudioResource("music.mp3");
+                        var audioRes = (0, voice_1.createAudioResource)("music.mp3");
                         debug_1.Debug.bot("Audio ressource created");
-                        var player = voice_1.createAudioPlayer();
+                        var player = (0, voice_1.createAudioPlayer)();
                         debug_1.Debug.bot("Audio player created");
                         var sub_1 = connection.subscribe(player);
                         debug_1.Debug.bot("New subscribber to connection");

@@ -51,7 +51,7 @@ var Database = /** @class */ (function () {
             client.db(config_1.Config.get_instance().MONGODB.COLLECTION)
                 .collection("messages")
                 .insertOne({
-                author: msg.author.username + "#" + msg.author.discriminator,
+                author: "".concat(msg.author.username, "#").concat(msg.author.discriminator),
                 post_date: new Date(Date.now()).toUTCString(),
                 channel: msg.channelId
             });

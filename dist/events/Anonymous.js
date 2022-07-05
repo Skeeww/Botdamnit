@@ -36,31 +36,22 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RandomAnswer = void 0;
+exports.Anonymous = void 0;
 var main_1 = require("../main");
+var config_1 = require("../utils/config");
 var debug_1 = require("../utils/debug");
-var RandomAnswer;
-(function (RandomAnswer) {
+var Anonymous;
+(function (Anonymous) {
     var _this = this;
-    debug_1.Debug.bot("[RandomAnswer] event loaded");
+    debug_1.Debug.bot("[Anonymous] event loaded");
     main_1.client.on("messageCreate", function (msg) { return __awaiter(_this, void 0, void 0, function () {
-        var odd;
-        var _a, _b, _c;
-        return __generator(this, function (_d) {
-            if (msg.author.bot)
+        var _a;
+        return __generator(this, function (_b) {
+            if (msg.author.bot || msg.channel.type !== "DM")
                 return [2 /*return*/];
-            odd = Math.random();
-            if (odd < 0.002) {
-                msg.channel.send("AH OUAIS ".concat((_a = msg.member) === null || _a === void 0 ? void 0 : _a.displayName, " ?! ").concat(msg.content.toUpperCase()));
-            }
-            else if (odd < 0.004) {
-                msg.channel.send("".concat(msg.author.username, " tu viens vraiment de dire \u00E7a sur ").concat((_c = (_b = msg.guild) === null || _b === void 0 ? void 0 : _b.members.cache.random()) === null || _c === void 0 ? void 0 : _c.displayName, " !!!!"));
-            }
-            else if (odd < 0.008) {
-                msg.channel.send("".concat(msg.author.username, " plut\u00F4t g\u00EAnant"));
-            }
+            ((_a = main_1.client.guilds.cache.find(function (g) { return g.id === config_1.Config.get_instance().GUILD_ID; })) === null || _a === void 0 ? void 0 : _a.channels.cache.find(function (c) { return c.id === config_1.Config.get_instance().CHANNELS.ANO; })).send("".concat(msg.content, "\n=========="));
             return [2 /*return*/];
         });
     }); });
-})(RandomAnswer = exports.RandomAnswer || (exports.RandomAnswer = {}));
-//# sourceMappingURL=RandomAnswer.js.map
+})(Anonymous = exports.Anonymous || (exports.Anonymous = {}));
+//# sourceMappingURL=Anonymous.js.map

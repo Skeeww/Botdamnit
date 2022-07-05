@@ -10,10 +10,10 @@ var config_1 = require("../utils/config");
 function run(cmd) {
     if (cmd.args.length > 0) {
         var query_1 = cmd.args.join(", ").replace(", ", " ");
-        axios_1.default.get("https://imdb-api.com/en/API/Search/" + config_1.Config.get_instance().IMDB_API_KEY + "/" + query_1).then(function (res) {
+        axios_1.default.get("https://imdb-api.com/en/API/Search/".concat(config_1.Config.get_instance().IMDB_API_KEY, "/").concat(query_1)).then(function (res) {
             console.log(query_1);
             if (res.data.results.length > 0) {
-                axios_1.default.get("https://imdb-api.com/en/API/Title/" + config_1.Config.get_instance().IMDB_API_KEY + "/" + res.data.results[0].id).then(function (res) {
+                axios_1.default.get("https://imdb-api.com/en/API/Title/".concat(config_1.Config.get_instance().IMDB_API_KEY, "/").concat(res.data.results[0].id)).then(function (res) {
                     var movie = res.data;
                     var embed = new discord_js_1.MessageEmbed({
                         title: movie.title || 'Titre introuvable',
@@ -43,7 +43,7 @@ function run(cmd) {
                             },
                             {
                                 name: "MetaCritic",
-                                value: (movie.metacriticRating || 'NaN') + "%",
+                                value: "".concat(movie.metacriticRating || 'NaN', "%"),
                                 inline: true
                             },
                             {
@@ -60,14 +60,14 @@ function run(cmd) {
                     });
                     cmd.msg.channel.send({ embeds: [embed] });
                 }).catch(function (err) {
-                    cmd.msg.channel.send("Erreur: `" + err + "`");
+                    cmd.msg.channel.send("Erreur: `".concat(err, "`"));
                 });
             }
             else {
                 cmd.msg.channel.send("Le film ou la série n'a pas été trouvé");
             }
         }).catch(function (err) {
-            cmd.msg.channel.send("Erreur: `" + err + "`");
+            cmd.msg.channel.send("Erreur: `".concat(err, "`"));
         });
     }
     else {

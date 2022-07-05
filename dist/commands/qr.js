@@ -19,13 +19,13 @@ function run(cmd) {
     }).then(function () {
         fs_1.default.readFile("./qr.png", function (err, data) {
             if (err) {
-                cmd.msg.channel.send("Erreur: `" + err + "`");
+                cmd.msg.channel.send("Erreur: `".concat(err, "`"));
                 return;
             }
             cmd.msg.channel.send({ files: [new discord_js_1.MessageAttachment(data)] });
         });
     }).catch(function (err) {
-        cmd.msg.channel.send("Erreur: `" + err + "`");
+        cmd.msg.channel.send("Erreur: `".concat(err, "`"));
     });
 }
 exports.run = run;

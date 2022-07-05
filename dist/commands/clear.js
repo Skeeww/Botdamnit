@@ -7,7 +7,7 @@ function run(cmd) {
         msgNumber = parseInt(cmd.args[0]);
     }
     cmd.msg.channel.bulkDelete(msgNumber).then(function () {
-        cmd.msg.channel.send("Nettoyage de " + msgNumber + " messages");
+        cmd.msg.channel.send("Nettoyage de ".concat(msgNumber, " messages"));
     }).catch(function () {
         cmd.msg.channel.send("Une erreur est survenu #sendUwU in the tchat !");
     });

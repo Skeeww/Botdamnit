@@ -11,9 +11,9 @@ function run(cmd) {
         return;
     }
     axios_1.default.get(cmd.args[0]).then(function (v) {
-        cmd.msg.channel.send("Le site **" + cmd.args[0] + "** \u00E0 r\u00E9pondu avec le code `" + v.status + " - " + v.statusText + "`");
+        cmd.msg.channel.send("Le site **".concat(cmd.args[0], "** \u00E0 r\u00E9pondu avec le code `").concat(v.status, " - ").concat(v.statusText, "`"));
     }).catch(function (err) {
-        cmd.msg.channel.send("Le site **" + cmd.args[0] + "** est innaccessible `" + err + "`");
+        cmd.msg.channel.send("Le site **".concat(cmd.args[0], "** est innaccessible `").concat(err, "`"));
     });
 }
 exports.run = run;

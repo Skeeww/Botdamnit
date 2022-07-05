@@ -7,7 +7,7 @@ var Tick = /** @class */ (function () {
         this.freq = freq;
         this.modules = modules;
         this.modules.forEach(function (m) {
-            debug_1.Debug.bot("[" + m.name + "] module loaded");
+            debug_1.Debug.bot("[".concat(m.name, "] module loaded"));
         });
     }
     Tick.prototype.run = function () {
