@@ -1,4 +1,5 @@
 import { Message, User } from 'discord.js';
+import path from 'path';
 import { Command } from './command';
 import { Config } from './config';
 import { Debug } from './debug';
@@ -21,7 +22,11 @@ class HandledCommand extends Command implements IHandledCommand {
         this.msg = msg
         splittedMessage.length > 1 ? this.args = splittedMessage.slice(1) : this.args = []
         Debug.bot(`${this.author.username}#${this.author.discriminator} execute ${this.name} with args ${this.args}`)
-        require(`../commands/${this.command}`).run(this)
+        try {
+            require(path.join(__dirname, "../commands/", this.command)).run(this)
+        } catch {
+            Debug.bot(`Commande "${this.command}" non trouvée`)
+        }
     }
 }
 
