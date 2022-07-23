@@ -2,6 +2,7 @@ import presence from "../config/presence.json"
 import { client } from "../main"
 import { IModule } from "./tick"
 import moment from "moment"
+import { ActivityType } from "discord.js"
 class Presence implements IModule{
     static i: number = 0
     name: string = "Presence"
@@ -9,7 +10,7 @@ class Presence implements IModule{
         if(Presence.i < presence.length){
             client.user?.setActivity({
                 name: presence[Presence.i] === "!DATE" ? `il est ${moment().format("HH:mm")}` : presence[Presence.i],
-                type: "PLAYING"
+                type: ActivityType.Playing
             })
             Presence.i++
         }else{

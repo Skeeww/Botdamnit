@@ -1,4 +1,4 @@
-import { Client, Intents } from "discord.js"
+import { Client, GatewayIntentBits, Partials,  } from "discord.js"
 import { Members } from "./modules/members"
 import { Presence } from "./modules/presence"
 import { Tick } from "./modules/tick"
@@ -10,18 +10,20 @@ process.env.TZ = 'Europe/Paris'
 const config: Config = Config.get_instance()
 const client: Client = new Client({
     intents: [
-        Intents.FLAGS.GUILDS,
-        Intents.FLAGS.DIRECT_MESSAGES,
-        Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
-        Intents.FLAGS.DIRECT_MESSAGE_TYPING,
-        Intents.FLAGS.GUILD_MESSAGES,
-        Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-        Intents.FLAGS.GUILD_MESSAGE_TYPING,
-        Intents.FLAGS.GUILD_MEMBERS,
-        Intents.FLAGS.GUILD_VOICE_STATES,
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildMessageReactions,
+        GatewayIntentBits.GuildMessageTyping,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildVoiceStates,
+        GatewayIntentBits.DirectMessages,
+        GatewayIntentBits.DirectMessageReactions,
+        GatewayIntentBits.DirectMessageTyping
     ],
     partials: [
-        "CHANNEL"
+        Partials.Channel,
+        Partials.GuildMember,
+        Partials.Message
     ]
 })
 

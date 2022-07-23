@@ -1,32 +1,40 @@
 {
   "name": "botdamnit",
-  "version": "1.4.0",
+  "version": "1.5.1",
   "description": "A discord bot with amazing features",
   "main": "./dist/main.js",
   "repository": "git@gitlab.com:skewram/botdamnit.git",
   "author": "Noan <noan.perrot@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@discordjs/voice": "^0.10.0",
-    "@types/debug": "^4.1.5",
-    "@types/node": "^17.0.4",
-    "@types/qrcode": "^1.4.2",
     "axios": "^0.27.2",
     "bufferutil": "^4.0.5",
     "debug": "^4.3.3",
-    "discord.js": "^13.8.1",
+    "discord.js": "^14.0.3",
     "dotenv": "^16.0.1",
     "jimp": "^0.16.0",
     "libsodium-wrappers": "^0.7.9",
-    "minecraft-server-util": "^5.2.5",
+    "minecraft-server-util": "^5.3.0",
     "moment": "^2.29.1",
-    "mongodb": "^4.2.2",
-    "qrcode": "^1.5.0",
-    "typescript": "^4.7.4",
+    "mongodb": "^4.8.0",
+    "qrcode": "^1.5.1",
     "utf-8-validate": "^5.0.7"
   },
   "scripts": {
     "dev_win": "@powershell -Command $env:DEBUG='*';nodemon src/main.ts",
     "dev_linux": "DEBUG='*' nodemon src/main.ts"
+  },
+  "devDependencies": {
+    "@discordjs/voice": "^0.11.0",
+    "@types/debug": "^4.1.5",
+    "@types/node": "^17.0.4",
+    "@types/qrcode": "^1.4.2",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "jest": "^28.1.3",
+    "typescript": "^4.7.4"
   }
 }
