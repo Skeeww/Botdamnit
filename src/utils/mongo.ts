@@ -1,6 +1,5 @@
-import { Guild, Message, PartialUser, User } from "discord.js"
+import { Guild, Message } from "discord.js"
 import { MongoClient } from "mongodb"
-import { SocketAddress } from "net"
 import { Config } from "./config"
 
 export default class Database {

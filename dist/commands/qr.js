@@ -4,9 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = void 0;
-var qrcode_1 = __importDefault(require("qrcode"));
-var discord_js_1 = require("discord.js");
-var fs_1 = __importDefault(require("fs"));
+const qrcode_1 = __importDefault(require("qrcode"));
+const discord_js_1 = require("discord.js");
+const fs_1 = __importDefault(require("fs"));
 function run(cmd) {
     if (cmd.args.length === 0) {
         cmd.msg.channel.send("Il manque du texte");
@@ -16,16 +16,16 @@ function run(cmd) {
         errorCorrectionLevel: 'L',
         type: 'png',
         width: 250
-    }).then(function () {
-        fs_1.default.readFile("./qr.png", function (err, data) {
+    }).then(() => {
+        fs_1.default.readFile(`./qr.png`, (err, data) => {
             if (err) {
-                cmd.msg.channel.send("Erreur: `".concat(err, "`"));
+                cmd.msg.channel.send(`Erreur: \`${err}\``);
                 return;
             }
             cmd.msg.channel.send({ files: [new discord_js_1.MessageAttachment(data)] });
         });
-    }).catch(function (err) {
-        cmd.msg.channel.send("Erreur: `".concat(err, "`"));
+    }).catch(err => {
+        cmd.msg.channel.send(`Erreur: \`${err}\``);
     });
 }
 exports.run = run;

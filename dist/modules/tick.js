@@ -1,23 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Tick = void 0;
-var debug_1 = require("../utils/debug");
-var Tick = /** @class */ (function () {
-    function Tick(freq, modules) {
+const debug_1 = require("../utils/debug");
+class Tick {
+    constructor(freq, modules) {
         this.freq = freq;
         this.modules = modules;
-        this.modules.forEach(function (m) {
-            debug_1.Debug.bot("[".concat(m.name, "] module loaded"));
+        this.modules.forEach((m) => {
+            debug_1.Debug.bot(`[${m.name}] module loaded`);
         });
     }
-    Tick.prototype.run = function () {
-        var _this = this;
-        this.modules.forEach(function (m) {
+    run() {
+        this.modules.forEach((m) => {
             m.exec();
-            setInterval(function () { return m.exec(); }, _this.freq);
+            setInterval(() => m.exec(), this.freq);
         });
-    };
-    return Tick;
-}());
+    }
+}
 exports.Tick = Tick;
 //# sourceMappingURL=tick.js.map

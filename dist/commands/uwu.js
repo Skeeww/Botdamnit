@@ -10,22 +10,22 @@ function run(cmd) {
     cmd.msg.channel.send(uwuinate(cmd.args));
 }
 exports.run = run;
-var kaomojiJoy = [" (* ^ ω ^)", " (o^▽^o)", " (≧◡≦)", " ☆⌒ヽ(*\"､^*)chu", " ( ˘⌣˘)♡(˘⌣˘ )", " xD"];
-var kaomojiEmbarassed = [" (⁄ ⁄>⁄ ▽ ⁄<⁄ ⁄)..", " (*^.^*)..,", "..,", ",,,", "... ", ".. ", " mmm..", "O.o"];
-var kaomojiConfuse = [" (o_O)?", " (°ロ°) !?", " (ーー;)?", " owo?"];
-var kaomojiSparkles = [" *:･ﾟ✧*:･ﾟ✧ ", " ☆*:・ﾟ ", "〜☆ ", " uguu.., ", "-.-"];
+const kaomojiJoy = [" (* ^ ω ^)", " (o^▽^o)", " (≧◡≦)", " ☆⌒ヽ(*\"､^*)chu", " ( ˘⌣˘)♡(˘⌣˘ )", " xD"];
+const kaomojiEmbarassed = [" (⁄ ⁄>⁄ ▽ ⁄<⁄ ⁄)..", " (*^.^*)..,", "..,", ",,,", "... ", ".. ", " mmm..", "O.o"];
+const kaomojiConfuse = [" (o_O)?", " (°ロ°) !?", " (ーー;)?", " owo?"];
+const kaomojiSparkles = [" *:･ﾟ✧*:･ﾟ✧ ", " ☆*:・ﾟ ", "〜☆ ", " uguu.., ", "-.-"];
 function uwuinate(textInput) {
-    var result = "";
-    textInput.forEach(function (word, index) {
+    let result = "";
+    textInput.forEach((word, index) => {
         result += uwuWord(word.toLowerCase(), index);
     });
     return result;
 }
 function uwuWord(word, index) {
-    var uwu = "";
-    var lastChar = word[word.length - 1];
-    var end = "";
-    var random = 0;
+    let uwu = "";
+    let lastChar = word[word.length - 1];
+    let end = "";
+    let random = 0;
     if (lastChar == '.' || lastChar == '?' || lastChar == '!' || lastChar == ',') {
         word = word.slice(0, -1);
         end = lastChar;

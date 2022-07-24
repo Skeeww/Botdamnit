@@ -4,8 +4,10 @@ node_modules/
 yarn.lock
 yarn-error.log
 package-lock.json
-/**/*.disabled
-./build/
-./**/*.old
-./**/*.db
-./**/*.mp3
+**/*.disabled
+build/
+**/*.old
+**/*.db
+**/*.mp3
+storage/
+storage/**/*

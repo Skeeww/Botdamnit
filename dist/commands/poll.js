@@ -1,41 +1,38 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = void 0;
-var discord_js_1 = require("discord.js");
-var main_1 = require("../main");
-var config_1 = require("../utils/config");
-var emotesReact = ["0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"];
-var Poll = /** @class */ (function () {
-    function Poll(question, answers) {
-        var _this = this;
+const discord_js_1 = require("discord.js");
+const main_1 = require("../main");
+const config_1 = require("../utils/config");
+const emotesReact = ["0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"];
+class Poll {
+    constructor(question, answers) {
         this.question = "";
         this.answers = new Map();
         this.startTime = new Date();
         this.question = question;
-        answers.forEach(function (answer, i) {
-            _this.answers.set(answer, emotesReact[i]);
+        answers.forEach((answer, i) => {
+            this.answers.set(answer, emotesReact[i]);
         });
     }
-    Poll.prototype.send = function () {
-        var _this = this;
-        main_1.client.guilds.fetch(config_1.Config.get_instance().GUILD_ID).then(function (guild) {
-            var embed = new discord_js_1.MessageEmbed();
-            _this.answers.forEach(function (v, k) {
+    send() {
+        main_1.client.guilds.fetch(config_1.Config.get_instance().GUILD_ID).then(guild => {
+            const embed = new discord_js_1.MessageEmbed();
+            this.answers.forEach((v, k) => {
                 embed.addField(k, v, true);
             });
-            embed.setTitle(_this.question);
-            guild.channels.cache.find(function (c) { return c.id === config_1.Config.get_instance().CHANNELS.POLLS; }).send({ embeds: [embed] }).then(function (m) {
-                _this.answers.forEach(function (v) {
+            embed.setTitle(this.question);
+            guild.channels.cache.find(c => c.id === config_1.Config.get_instance().CHANNELS.POLLS).send({ embeds: [embed] }).then((m) => {
+                this.answers.forEach((v) => {
                     m.react(v);
                 });
             });
-        }).catch(function () {
+        }).catch(() => {
             return false;
         });
-    };
-    return Poll;
-}());
-var regexp = /:([0-9]*)>/g;
+    }
+}
+const regexp = /:([0-9]*)>/g;
 function run(cmd) {
     if (cmd.args.length) {
         cmd.args = cmd.args.join(" ").split(",");
@@ -43,7 +40,7 @@ function run(cmd) {
             cmd.msg.channel.send("Attention ! Les sondages doivent contenir entre 1 et 10 réponses");
             return;
         }
-        var poll = new Poll(cmd.args.pop(), cmd.args);
+        const poll = new Poll(cmd.args.pop(), cmd.args);
         poll.send();
         cmd.msg.channel.send("Sondage créé !");
     }

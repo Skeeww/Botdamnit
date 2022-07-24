@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = void 0;
 function run(cmd) {
     if (cmd.args.length == 1) {
-        cmd.msg.channel.messages.fetch(cmd.args[0], { cache: true }).then(function (m) {
-            cmd.msg.channel.send("Le message de ".concat(m.author.username, " est maintenant dans le cache"));
-        }).catch(function (err) {
-            cmd.msg.channel.send(" ``` ".concat(err, " ``` "));
+        cmd.msg.channel.messages.fetch(cmd.args[0], { cache: true }).then(m => {
+            cmd.msg.channel.send(`Le message de ${m.author.username} est maintenant dans le cache`);
+        }).catch(err => {
+            cmd.msg.channel.send(` \`\`\` ${err} \`\`\` `);
         });
     }
     else {

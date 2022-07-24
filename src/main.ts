@@ -18,7 +18,8 @@ const client: Client = new Client({
         GatewayIntentBits.GuildVoiceStates,
         GatewayIntentBits.DirectMessages,
         GatewayIntentBits.DirectMessageReactions,
-        GatewayIntentBits.DirectMessageTyping
+        GatewayIntentBits.DirectMessageTyping,
+        GatewayIntentBits.MessageContent
     ],
     partials: [
         Partials.Channel,
@@ -29,6 +30,14 @@ const client: Client = new Client({
 
 client.on("ready", () => {
     require("./events/index")
+    if (!config.check_storage_folder()) {
+        Debug.bot('Storage folder not found, try creating it...')
+        if (config.create_storage_folder()) {
+            Debug.bot('Storage folder created')
+        } else {
+            Debug.bot('Creation of storage folder failed')
+        }
+    }
     new Tick(10 * 1000, [new Presence]).run()
     new Tick(3600 * 1000, [new Members]).run()
     Debug.bot("Bot ready")
